@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1459505113 source:/home/maki/Dropbox/3e_annee/IA/Jarvis/C++Project/Jarvis_v_0.1/main.cpp
+	<iostream>
+	"Card.h"
+
+1459505137 /home/maki/Dropbox/3e_annee/IA/Jarvis/C++Project/Jarvis_v_0.1/include/Card.h
+	<string>
+
+1459505171 source:/home/maki/Dropbox/3e_annee/IA/Jarvis/C++Project/Jarvis_v_0.1/src/Card.cpp
+	"Card.h"
+
