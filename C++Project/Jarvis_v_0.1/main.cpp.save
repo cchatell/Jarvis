@@ -27,7 +27,6 @@ int main()
     value[6]='8';
     value[7]='7';
 
-    //exemples de cartes
    Card as_trefle(&color[CLUBS],&value[ACE]);
    Card roi_carreau(&color[DIAMONDS],&value[KING]);
    Card neuf_pique(&color[SPADES],&value[NINE]);
@@ -37,20 +36,17 @@ int main()
    Card sept_trefle(&color[CLUBS],&value[SEVEN]);
    Card dix_trefle(&color[CLUBS],&value[TEN]);
 
-    //exemple de main
    Hand h1(&as_trefle,&roi_carreau,&neuf_pique,&huit_pique,&valet_trefle,&dame_trefle,&sept_trefle,&dix_trefle);
-    cout << "carte exemple as_trefle : " << as_trefle.toString()<<endl<<endl;
-    cout << "main exemple h1 : " << h1.toString()<<endl<<endl;
+    cout << "carte as_trefle: " << as_trefle.toString()<<endl<<endl;
+    cout << "main h1: " << h1.toString()<<endl<<endl;
 
-
-    //génération d'un jeu de carte
     Card jeu[32];
     Hand familles[4];
     Card famille[8];
 
     int i;
     int j;
-    cout << "familles de cartes generees"<<endl;
+
     for (i=0;i<4;i++){
     Card c1;
         for (j=0;j<8;j++){
@@ -63,9 +59,9 @@ int main()
          familles[i]=h1;
         cout<< h1.toString()<<endl<<endl;
     }
-    cout << "Jeu entier genere"<<endl;
-    for (i=0; i<32;i++){
-        cout << jeu[i].toString()<<endl;
+    
+    for (i=0; i<32,i++){
+        cout << jeu[i].toString()
     }
 
 

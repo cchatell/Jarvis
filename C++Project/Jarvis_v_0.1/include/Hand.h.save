@@ -1,0 +1,18 @@
+
+#ifndef HAND_H
+#define HAND_H
+namespace IA{
+
+
+class Hand
+{
+    public:
+            Hand(IA::Card *c1);
+        virtual ~Hand();
+    protected:
+    private:
+        int* cards[8];
+
+};
+}
+#endif // HAND_H

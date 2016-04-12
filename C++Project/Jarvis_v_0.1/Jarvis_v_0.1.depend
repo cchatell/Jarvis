@@ -9,3 +9,21 @@
 1459505171 source:/home/maki/Dropbox/3e_annee/IA/Jarvis/C++Project/Jarvis_v_0.1/src/Card.cpp
 	"Card.h"
 
+1460481230 source:d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\src\card.cpp
+	"Card.h"
+
+1460481247 d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\include\card.h
+	<string>
+
+1460481717 source:d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\main.cpp
+	<iostream>
+	"Card.h"
+	"Hand.h"
+
+1460481524 d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\include\hand.h
+	<string>
+	"Card.h"
+
+1460481505 source:d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\src\hand.cpp
+	"Hand.h"
+

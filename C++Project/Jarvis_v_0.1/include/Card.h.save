@@ -2,10 +2,10 @@
 #define CARD_H
 #include <string>
 
+
 class Card
 {
     public:
-        Card();
         Card(std::string *c, char *v);
         virtual ~Card();
         std::string* getColor() { return m_color; }
@@ -18,4 +18,5 @@ class Card
         std::string* m_color;
         char* m_value;
 };
+}
 #endif // CARD_H
