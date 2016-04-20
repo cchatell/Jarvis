@@ -1,21 +1,22 @@
 #ifndef CARD_H
 #define CARD_H
-#include <string>
+
+#include "Global.h"
 
 class Card
 {
     public:
         Card();
-        Card(std::string *c, char *v);
+        Card(int c, char v);
         virtual ~Card();
-        std::string* getColor() { return m_color; }
-        void setColor(std::string* val) { m_color = val; }
-        char* getValue() { return m_value; }
-        void setValue(char* val) { m_value = val; }
-        std::string toString(){return *(this->getColor())+" "+*(this->getValue());}
+        int getColor() { return m_color; }
+        void setColor(int val) { m_color = val; }
+        char getValue() { return m_value; }
+        void setValue(char val) { m_value = val; }
+        std::string toString(){return COLORS[m_color]+" "+VALUES[m_value];}
     protected:
     private:
-        std::string* m_color;
-        char* m_value;
+        int m_color;
+        int m_value;
 };
 #endif // CARD_H
