@@ -2,7 +2,7 @@
 
 #include <string>
 
-enum{HEARTS,DIAMONDS,CLUBS,SPADES};
+enum{HEART,DIAMOND,CLUB,SPADE};
 const std::string COLORS[4] = {"HEART", "DIAMOND", "CLUBS", "SPADES"};
 
 enum{ACE,TEN,KING,QUEEN,JACK,NINE,EIGHT,SEVEN};

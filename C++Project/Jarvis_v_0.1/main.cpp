@@ -7,19 +7,19 @@ int main()
 {
     cout << "Bonjour M. Stark, en quoi puis-je vous aider ?" << endl<<endl;
 
-
+/*
     //exemples de cartes
-   Card as_trefle(CLUBS,ACE);
-   Card roi_carreau(DIAMONDS,KING);
-   Card neuf_pique(SPADES,NINE);
-   Card huit_pique(SPADES,EIGHT);
-   Card valet_trefle(CLUBS,JACK);
-   Card dame_trefle(CLUBS,QUEEN);
-   Card sept_trefle(CLUBS,SEVEN);
-   Card dix_trefle(CLUBS,TEN);
+    Card as_trefle(CLUBS,ACE);
+    Card roi_carreau(DIAMONDS,KING);
+    Card neuf_pique(SPADES,NINE);
+    Card huit_pique(SPADES,EIGHT);
+    Card valet_trefle(CLUBS,JACK);
+    Card dame_trefle(CLUBS,QUEEN);
+    Card sept_trefle(CLUBS,SEVEN);
+    Card dix_trefle(CLUBS,TEN);
 
     //exemple de main
-   Hand h1(&as_trefle,&roi_carreau,&neuf_pique,&huit_pique,&valet_trefle,&dame_trefle,&sept_trefle,&dix_trefle);
+    Hand h1(&as_trefle,&roi_carreau,&neuf_pique,&huit_pique,&valet_trefle,&dame_trefle,&sept_trefle,&dix_trefle);
     cout << "carte exemple as_trefle : " << as_trefle.toString()<<endl<<endl;
     cout << "main exemple h1 : " << h1.toString()<<endl<<endl;
 
@@ -47,8 +47,12 @@ int main()
     cout << "Jeu entier genere"<<endl;
     for (i=0; i<32;i++){
         cout << jeu[i].toString()<<endl;
-    }
+    }*/
 
+    Hand h;
+    Card c1(HEART, ACE);
+    h.draw(&c1);
+    h.discard(0);
 
     return 0;
 }
