@@ -1,5 +1,7 @@
 #include "Game.h"
 
+
+
 Game::Game(){
     Hand h1, h2, h3, h4;
     m_hands = {h1, h2, h3, h4};
@@ -8,7 +10,7 @@ Game::Game(){
 }
 
 Game::shuffle(){
-    Card jeu[32];
+    vector<Card> jeu;
     Card c1;
 
     for (i=0;i<4;i++){

@@ -52,7 +52,16 @@ int main()
     Hand h;
     Card c1(HEART, ACE);
     h.draw(&c1);
+
+
+    Hand h2 = h;
+
     h.discard(0);
+    //h2.discard(0);
+
+    cout << h.toString() << endl;
+
+    cout << h2.toString() << endl;
 
     return 0;
 }
