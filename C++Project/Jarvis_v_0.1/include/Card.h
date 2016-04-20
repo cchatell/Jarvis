@@ -1,5 +1,4 @@
-#ifndef CARD_H
-#define CARD_H
+#pragma once
 
 #include "Global.h"
 
@@ -19,4 +18,3 @@ class Card
         int m_color;
         int m_value;
 };
-#endif // CARD_H

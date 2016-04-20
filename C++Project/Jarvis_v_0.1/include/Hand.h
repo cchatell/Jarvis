@@ -1,5 +1,4 @@
-#ifndef HAND_H
-#define HAND_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -17,5 +16,3 @@ class Hand
         std::vector<Card*> cards;
 
 };
-
-#endif // HAND_H
