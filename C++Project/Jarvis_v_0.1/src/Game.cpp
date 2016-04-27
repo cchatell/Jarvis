@@ -8,12 +8,11 @@
 using namespace std;
 
 Game::Game(){
-    m_hands[0] = new IA_random();
-    m_hands[1] = new IA_random();
-    m_hands[2] = new IA_random();
-    m_hands[3] = new IA_random();
-
-    shuffle();
+    int i=0;
+    while(i<4){
+        m_hands[i] = new IA_random();
+        m_scores[i++] = 0;
+    }
 }
 
 Game::~Game(){
@@ -55,4 +54,20 @@ string Game::toString(){
 
 Hand* Game::getHand(int index){
     return m_hands[index];
+}
+
+
+void Game::start(){
+    cout << "Très bien monsieur. Le ciel est dégagé." << endl;
+
+    // On distribue les cartes
+    shuffle();
+
+    cout << endl;
+
+    // 8 tours de jeu
+    int turn;
+    for(turn = 0; turn < 8; turn++){
+
+    }
 }

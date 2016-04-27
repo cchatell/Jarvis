@@ -10,7 +10,7 @@ MonteCarlo::~MonteCarlo()
     //dtor
 }
 
-MonteCarlo::launch(){
+Card* MonteCarlo::launch(){
 
-    return null;
+    return 0;
 }

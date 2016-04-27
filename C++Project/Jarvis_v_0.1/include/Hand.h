@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include "Card.h"
-#include "MonteCarlo.h"
 
 class Hand
 {
@@ -31,12 +30,6 @@ class Hand
         std::vector<Card*> m_cards;
         int m_number;
 
-};
-
-class Ultron : public Hand
-{
-    public:
-        virtual Card* play();
 };
 
 class IA_random : public Hand
