@@ -8,11 +8,10 @@
 using namespace std;
 
 Game::Game(){
-    Hand h1, h2, h3, h4;
-    m_hands[0] = h1;
-    m_hands[1] = h2;
-    m_hands[2] = h3;
-    m_hands[3] = h4;
+    m_hands[0] = new IA_random();
+    m_hands[1] = new IA_random();
+    m_hands[2] = new IA_random();
+    m_hands[3] = new IA_random();
 
     shuffle();
 }
@@ -34,7 +33,7 @@ void Game::shuffle(){
     for(i = 0; i<8; i++){
         for(j=0; j<4; j++){
             c = rand()%(32-(i*4)-j);
-            m_hands[j].draw(jeu[c]);
+            m_hands[j]->draw(jeu[c]);
             jeu.erase(jeu.begin()+c);
         }
     }
@@ -46,10 +45,14 @@ string Game::toString(){
     ostringstream oss;
 
     oss << "Contract : " << COLORS[m_contract] << endl;
-    oss << "Player 1" << endl << m_hands[0].toString() << endl;
-    oss << "Player 2" << endl << m_hands[1].toString() << endl;
-    oss << "Player 3" << endl << m_hands[2].toString() << endl;
-    oss << "Player 4" << endl << m_hands[3].toString() << endl;
+    oss << "Player 1" << endl << m_hands[0]->toString() << endl;
+    oss << "Player 2" << endl << m_hands[1]->toString() << endl;
+    oss << "Player 3" << endl << m_hands[2]->toString() << endl;
+    oss << "Player 4" << endl << m_hands[3]->toString() << endl;
 
     return oss.str();
+}
+
+Hand* Game::getHand(int index){
+    return m_hands[index];
 }
