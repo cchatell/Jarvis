@@ -48,7 +48,7 @@ int main()
         cout << jeu[i].toString()<<endl;
     }*/
 
-    Game g;
+
     g.start();
     MonteCarlo m(&g);
     m.launch();
