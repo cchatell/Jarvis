@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Card.h"
+#include "MonteCarlo.h"
 
 class Hand
 {
