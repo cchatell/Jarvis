@@ -6,9 +6,10 @@ class Game{
     public:
         Game();
         ~Game();
+        std::string toString();
     private:
         void shuffle();
 
         Hand m_hands[4];
-        int contract;
+        int m_contract;
 };

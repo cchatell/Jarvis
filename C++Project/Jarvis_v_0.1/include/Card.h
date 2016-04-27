@@ -1,6 +1,14 @@
 #pragma once
 
-#include "Global.h"
+#include <string>
+
+enum{HEART,DIAMOND,CLUB,SPADE};
+const std::string COLORS[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+
+enum{ACE,TEN,KING,QUEEN,JACK,NINE,EIGHT,SEVEN};
+const std::string NAMES[8] = {"Ace of ", "10 of ", "King of ", "Queen of ", "Jack of ", "9 of ", "8 of ", "7 of "};
+const int VALUES[8] = {11, 10, 4, 3, 2, 0, 0, 0};
+const int VALUES_CONTRACT[8] = {11, 10, 4, 3, 20, 14, 0, 0};
 
 class Card
 {
@@ -12,9 +20,18 @@ class Card
         void setColor(int val) { m_color = val; }
         char getValue() { return m_value; }
         void setValue(char val) { m_value = val; }
-        std::string toString(){return COLORS[m_color]+" "+VALUES[m_value];}
+        std::string toString(){return NAMES[m_value]+COLORS[m_color];}
     protected:
     private:
         int m_color;
         int m_value;
 };
+
+const Card DECK[4][8] = {{Card(HEART, ACE), Card(HEART, TEN), Card(HEART, KING), Card(HEART, QUEEN),
+                    Card(HEART, JACK),Card(HEART, NINE),Card(HEART, EIGHT),Card(HEART, SEVEN)},
+                    {Card(DIAMOND, ACE), Card(DIAMOND, TEN), Card(DIAMOND, KING), Card(DIAMOND, QUEEN),
+                    Card(DIAMOND, JACK),Card(DIAMOND, NINE),Card(DIAMOND, EIGHT),Card(DIAMOND, SEVEN)},
+                    {Card(CLUB, ACE), Card(CLUB, TEN), Card(CLUB, KING), Card(CLUB, QUEEN),
+                    Card(CLUB, JACK),Card(CLUB, NINE),Card(CLUB, EIGHT),Card(CLUB, SEVEN)},
+                    {Card(SPADE, ACE), Card(SPADE, TEN), Card(SPADE, KING), Card(SPADE, QUEEN),
+                    Card(SPADE, JACK),Card(SPADE, NINE),Card(SPADE, EIGHT),Card(SPADE, SEVEN)}};

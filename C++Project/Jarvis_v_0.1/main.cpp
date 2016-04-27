@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Hand.h"
+#include "Game.h"
 using namespace std;
 
 int main()
@@ -49,19 +49,8 @@ int main()
         cout << jeu[i].toString()<<endl;
     }*/
 
-    Hand h;
-    Card c1(HEART, ACE);
-    h.draw(&c1);
+    Game g;
 
-
-    Hand h2 = h;
-
-    h.discard(0);
-    //h2.discard(0);
-
-    cout << h.toString() << endl;
-
-    cout << h2.toString() << endl;
-
+    cout << g.toString() << endl;
     return 0;
 }

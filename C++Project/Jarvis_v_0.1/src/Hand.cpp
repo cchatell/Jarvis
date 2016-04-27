@@ -38,7 +38,7 @@ Card* Hand::getCard(int index){
 }
 
 string Hand::toString(){
-    int i;
+    unsigned int i;
     string s1("");
     for (i=0;i<m_cards.size();i++){
         s1 += m_cards[i]->toString()+"; ";
