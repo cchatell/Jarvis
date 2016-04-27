@@ -9,6 +9,9 @@ class Hand
     public:
         Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8);
         Hand();
+
+        Hand(const Hand &h);
+
         virtual ~Hand();
 
         // adds c to m_cards
