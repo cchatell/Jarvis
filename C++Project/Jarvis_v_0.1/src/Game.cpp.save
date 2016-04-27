@@ -64,8 +64,7 @@ string Game::toString(){
 
     oss << "Contract : " << COLORS[m_contract] << endl;
     oss << "Player 1" << endl << m_hands[0]->toString() << endl;
-    cout <<m_hands[0]->toString();
-    int i;
+    cout 
     oss << "Player 2" << endl << m_hands[1]->toString() << endl;
     oss << "Player 3" << endl << m_hands[2]->toString() << endl;
     oss << "Player 4" << endl << m_hands[3]->toString() << endl;

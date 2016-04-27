@@ -18,7 +18,7 @@ Card* MonteCarlo::launch(){
        Game g1=*(m_game);
        // g1.getHand(0)->discard(0);
         cout <<"jeux :" <<m_game->toString()<<endl<<endl;
-        g1.toString();
+        &g1.toString();
        // cout <<"jeux copie:" <<g1.toString()<<endl<<endl;
        // Card* cardToTest = g1.getHand(0)->getCard(i);
 
