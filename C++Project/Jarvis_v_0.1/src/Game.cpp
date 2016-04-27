@@ -29,7 +29,7 @@ Game::Game(const Game &g){
     int i =0;
     while(i<4){
         m_scores[i] = g.m_scores[i];
-        memcpy(m_hands[i], g.m_hands[i], sizeof(Hand));
+        *(m_hands[i]) = *(g.m_hands[i]);
         i++;
     }
 }
@@ -89,6 +89,6 @@ void Game::init(){
     if(verbose) cout << "Pour cette partie les atouts seront les " << COLORS[m_contract] << ". Prenez place." << endl;
 }
 
-int play(){
+int Game::play(){
     return 0;
 }
