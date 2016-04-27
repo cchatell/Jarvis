@@ -20,6 +20,13 @@ Hand::Hand()
 {
 }
 
+Hand::Hand(const Hand &h)
+{
+    m_number = h.m_number;
+    vector<Card*> new_(h.m_cards);
+    m_cards = new_;
+}
+
 Hand::~Hand()
 {
 }
