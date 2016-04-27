@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Game.h"
+#include "MonteCarlo.h"
 using namespace std;
 
 int main()
@@ -49,12 +49,9 @@ int main()
     }*/
 
     Game g;
-
-    cout << g.toString() << endl;
-
-    g.getHand(0)->discard(1);
-
-    cout << g.toString() << endl;
+    g.start();
+    MonteCarlo m(&g);
+    m.launch();
 
     return 0;
 }
