@@ -51,5 +51,10 @@ int main()
     Game g;
 
     cout << g.toString() << endl;
+
+    g.getHand(0)->discard(1);
+
+    cout << g.toString() << endl;
+
     return 0;
 }

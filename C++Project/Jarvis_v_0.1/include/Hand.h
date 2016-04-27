@@ -32,13 +32,13 @@ class Hand
 
 };
 
-class Ultron : Hand
+class Ultron : public Hand
 {
     public:
         virtual Card* play();
 };
 
-class IA_random : Hand
+class IA_random : public Hand
 {
     public:
         virtual Card* play();
