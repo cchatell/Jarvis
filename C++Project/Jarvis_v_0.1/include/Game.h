@@ -10,6 +10,8 @@ class Game{
         std::string toString();
         Hand* getHand(int index);
         void setVerbose(int v);
+
+        int play();
     private:
         void shuffle();
         void init();
