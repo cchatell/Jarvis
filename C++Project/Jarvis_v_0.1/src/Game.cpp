@@ -53,3 +53,7 @@ string Game::toString(){
 
     return oss.str();
 }
+
+Hand Game::getHand(int index){
+    return m_hands[index];
+}

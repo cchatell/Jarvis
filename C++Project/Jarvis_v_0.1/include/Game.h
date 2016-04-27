@@ -7,6 +7,7 @@ class Game{
         Game();
         ~Game();
         std::string toString();
+        Hand getHand(int index);
     private:
         void shuffle();
 
