@@ -47,3 +47,11 @@ string Hand::toString(){
     if (s1 == "") s1 = "Rien";
     return s1;
 }
+
+Card* Ultron::play(){
+    return 0;
+}
+
+Card* IA_random::play(){
+    return 0;
+}

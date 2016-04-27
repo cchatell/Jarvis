@@ -8,7 +8,7 @@ int main()
     cout << "Bonjour M. Stark, en quoi puis-je vous aider ?" << endl<<endl;
 
     //exemples de cartes
-    Card as_trefle(CLUB,ACE);
+    /*Card as_trefle(CLUB,ACE);
     Card roi_carreau(DIAMOND,KING);
     Card neuf_pique(SPADE,NINE);
     Card huit_pique(SPADE,EIGHT);
@@ -46,7 +46,7 @@ int main()
     cout << "Jeu entier genere"<<endl;
     for (i=0; i<32;i++){
         cout << jeu[i].toString()<<endl;
-    }
+    }*/
 
     Game g;
 
