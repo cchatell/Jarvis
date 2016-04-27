@@ -52,9 +52,9 @@ int main()
 
     cout << g.toString() << endl;
 
-    g.getHand(0)->discard(1);
+    //g.getHand(0)->discard(1);
 
-    cout << g.toString() << endl;
+    //cout << g.toString() << endl;
 
     return 0;
 }

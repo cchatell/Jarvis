@@ -4,14 +4,33 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <cstring>
+
 
 using namespace std;
 
-Game::Game(){
+Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0)
+{
     int i=0;
     while(i<4){
         m_hands[i] = new IA_random();
         m_scores[i++] = 0;
+    }
+
+    init();
+}
+
+Game::Game(const Game &g){
+    verbose = g.verbose;
+    m_turn = g.m_turn;
+    m_currentPlayer = g.m_currentPlayer;
+    m_contract = g.m_contract;
+
+    int i =0;
+    while(i<4){
+        m_scores[i] = g.m_scores[i];
+        memcpy(m_hands[i], g.m_hands[i], sizeof(Hand));
+        i++;
     }
 }
 
@@ -56,18 +75,20 @@ Hand* Game::getHand(int index){
     return m_hands[index];
 }
 
+void Game::setVerbose(int v){
+    verbose = v;
+}
 
-void Game::start(){
-    cout << "Très bien monsieur. Le ciel est dégagé." << endl;
+void Game::init(){
+    if(verbose)
+        cout << "Très bien monsieur. Le ciel est dégagé." << endl;
 
     // On distribue les cartes
     shuffle();
 
-    cout << endl;
+    if(verbose) cout << "Pour cette partie les atouts seront les " << COLORS[m_contract] << ". Prenez place." << endl;
+}
 
-    // 8 tours de jeu
-    int turn;
-    for(turn = 0; turn < 8; turn++){
-
-    }
+int play(){
+    return 0;
 }
