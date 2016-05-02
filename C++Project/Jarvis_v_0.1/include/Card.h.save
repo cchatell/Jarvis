@@ -9,7 +9,6 @@ enum{ACE,TEN,KING,QUEEN,JACK,NINE,EIGHT,SEVEN};
 const std::string NAMES[8] = {"Ace of ", "10 of ", "King of ", "Queen of ", "Jack of ", "9 of ", "8 of ", "7 of "};
 const int VALUES[8] = {11, 10, 4, 3, 2, 0, 0, 0};
 const int VALUES_CONTRACT[8] = {11, 10, 4, 3, 20, 14, 0, 0};
-
 class Card
 {
     public:
@@ -20,7 +19,7 @@ class Card
         void setColor(int val) { m_color = val; }
         char getValue() { return m_value; }
         void setValue(char val) { m_value = val; }
-        std::string toString(){return ((strinNAMES[m_value]+COLORS[m_color]);}
+        std::string toString(){return (NAMES[m_value]+COLORS[m_color]);}
     protected:
     private:
         int m_color;

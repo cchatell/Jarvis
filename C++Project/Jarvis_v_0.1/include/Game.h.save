@@ -8,8 +8,7 @@ class Game{
         Game(const Game &g);
         ~Game();
         std::string toString();
-       const Hand* getConstHand  (int index)const;
-        Hand* getHand  (int index);
+        Hand* getHand  (int index)const;
         void setVerbose(int v);
 
         int play();

@@ -22,8 +22,9 @@ Hand::Hand()
 
 Hand::Hand(const Hand &h)
 {
-    m_number = h.m_number;
-    vector<Card*> new_(h.m_cards);
+    m_number = h.getNumber();
+    vector<Card*> old_(h.getCards())
+    vector<Card*> new_(old.size()));
     m_cards = new_;
 }
 
@@ -41,7 +42,7 @@ Card* Hand::discard(int index){
     return c;
 }
 
-Card* Hand::getCard(int index){
+Card* Hand::getCard(int index)const {
     return m_cards[index];
 }
 
@@ -49,7 +50,7 @@ string Hand::toString(){
     unsigned int i;
     string s1("");
     for (i=0;i<m_cards.size();i++){
-        s1 += m_cards[i]->toString()+"; ";
+        s1 += (m_cards[i]->toString()+"; ");
     }
 
     if (s1 == "") s1 = "Rien";
@@ -72,9 +73,9 @@ IA_random::IA_random(){
 
 IA_random::IA_random(const IA_random &i)
 {
-    this->getNumber() = i.getNumber;
+    setNumber(i.getNumber());
     vector<Card*> new_(i.getCards());
-    m_cards = new_;
+    setCards(new_);
 }
 
 

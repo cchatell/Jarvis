@@ -13,7 +13,8 @@ Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0)
 {
     int i=0;
     while(i<4){
-        m_hands[i] = new IA_random();
+        IA_random h1;
+        m_hands[i] = h1 ;
         m_scores[i++] = 0;
     }
 
@@ -28,8 +29,8 @@ Game::Game(const Game &g){
     int i =0;
     while(i<4){
         m_scores[i] = g.m_scores[i];
-        Hand h1=*(g.m_hands[i]);
-        m_hands[i]= &h1;
+        Hand h1=*(g.getHand(i));
+        m_hands[i]= h1;
         i++;
     }
 }
@@ -51,7 +52,7 @@ void Game::shuffle(){
     for(i = 0; i<8; i++){
         for(j=0; j<4; j++){
             c = rand()%(32-(i*4)-j);
-            m_hands[j]->draw(jeu[c]);
+            m_hands[j].draw(jeu[c]);
             jeu.erase(jeu.begin()+c);
         }
     }
@@ -63,17 +64,17 @@ string Game::toString(){
     ostringstream oss;
 
     oss << "Contract : " << COLORS[m_contract] << endl;
-    oss << "Player 1" << endl << m_hands[0]->toString() << endl;
-    cout 
-    oss << "Player 2" << endl << m_hands[1]->toString() << endl;
-    oss << "Player 3" << endl << m_hands[2]->toString() << endl;
-    oss << "Player 4" << endl << m_hands[3]->toString() << endl;
+    oss << "Player 1" << endl << m_hands[0].toString() << endl;
+    oss << "Player 2" << endl << m_hands[1].toString() << endl;
+    oss << "Player 3" << endl << m_hands[2].toString() << endl;
+    oss << "Player 4" << endl << m_hands[3].toString() << endl;
 
     return oss.str();
 }
 
-Hand* Game::getHand(int index){
-    return m_hands[index];
+Hand* Game::getHand  (int index)const{
+    const 
+    return (&(m_hands[index]));
 }
 
 void Game::setVerbose(int v){

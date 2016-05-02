@@ -12,16 +12,13 @@ MonteCarlo::~MonteCarlo()
     //dtor
 }
 
-Card* MonteCarlo::launch(){
+Card* MonteCarlo::launch()
+{
     int i=0;
-    for (i=0;i<8;i++){
-       Game g1=*(m_game);
-       // g1.getHand(0)->discard(0);
-        cout <<"jeux :" <<m_game->toString()<<endl<<endl;
-        g1.toString();
-       // cout <<"jeux copie:" <<g1.toString()<<endl<<endl;
-       // Card* cardToTest = g1.getHand(0)->getCard(i);
-
+    for (i=0; i<8; i++)
+    {
+        Game g1=*(m_game);
+        Card* cardToTest = g1.getHand(0)->getCard(i);
         return 0;
     }
 }
