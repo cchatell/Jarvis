@@ -41,7 +41,7 @@ Card* Hand::discard(int index){
     return c;
 }
 
-Card* Hand::getCard(int index){
+Card* Hand::getCard(int index)const {
     return m_cards[index];
 }
 
@@ -52,7 +52,7 @@ string Hand::toString(){
     unsigned int i;
     string s1("");
     for (i=0;i<m_cards.size();i++){
-        s1 += m_cards[i]->toString()+"; ";
+        s1 += (m_cards[i]->toString()+"; ");
     }
 
     if (s1 == "") s1 = "Rien";
@@ -62,6 +62,24 @@ string Hand::toString(){
 Card* Ultron::play(){
     return 0;
 }
+
+IA_random::IA_random(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8):
+        Hand(n,c1, c2, c3,c4,c5,c6,c7,c8)
+{
+
+}
+
+IA_random::IA_random(){
+
+}
+
+IA_random::IA_random(const IA_random &i)
+{
+    setNumber(i.getNumber());
+    vector<Card*> new_(i.getCards());
+    setCards(new_);
+}
+
 
 Card* IA_random::play(){
     return 0;

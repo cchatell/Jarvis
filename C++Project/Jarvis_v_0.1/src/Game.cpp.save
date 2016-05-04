@@ -29,7 +29,7 @@ Game::Game(const Game &g){
     int i =0;
     while(i<4){
         m_scores[i] = g.m_scores[i];
-        Hand h1=*(g.getConstHand(i));
+        Hand h1=*(g.getHand(i));
         m_hands[i]= h1;
         i++;
     }
@@ -72,13 +72,8 @@ string Game::toString(){
     return oss.str();
 }
 
-const Hand* Game::getConstHand  (int index)const{
-
-    return (&(m_hands[index]));
-}
-
- Hand* Game::getHand  (int index){
-
+Hand* Game::getHand  (int index)const{
+    const 
     return (&(m_hands[index]));
 }
 
@@ -97,6 +92,5 @@ void Game::init(){
 }
 
 int Game::play(){
-
     return 0;
 }

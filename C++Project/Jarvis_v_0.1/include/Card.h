@@ -20,7 +20,7 @@ class Card
         void setColor(int val) { m_color = val; }
         char getValue() { return m_value; }
         void setValue(char val) { m_value = val; }
-        std::string toString(){return NAMES[m_value]+COLORS[m_color];}
+        std::string toString(){return (NAMES[m_value]+COLORS[m_color]);}
     protected:
     private:
         int m_color;

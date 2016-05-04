@@ -8,7 +8,7 @@
 class MonteCarlo
 {
     public:
-        MonteCarlo();
+        MonteCarlo(Game* g);
         virtual ~MonteCarlo();
         Game* Getgame() { return m_game; }
         void Setgame(Game* val) { m_game = val; }
