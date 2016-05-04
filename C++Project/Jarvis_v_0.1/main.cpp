@@ -49,9 +49,16 @@ int main()
     }*/
 
 
-    g.start();
-    MonteCarlo m(&g);
-    m.launch();
+    cout << g.toString() << endl;
+
+    /*Hand h();
+    h.draw(&DECK[SPADE][TEN]);*/
+
+
+    //g.getHand(0)->discard(1);
+
+    //cout << g.toString() << endl;
+
 
     return 0;
 }

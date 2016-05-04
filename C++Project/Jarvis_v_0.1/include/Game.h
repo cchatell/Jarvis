@@ -16,12 +16,14 @@ class Game{
     private:
         void shuffle();
         void init();
+        void resetBoard();
 
         int verbose;
         int m_turn;
         int m_currentPlayer;
 
         Hand m_hands[4];
+        Card* board[4];
         int m_scores[4];
         int m_contract;
 };

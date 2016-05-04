@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Card::Card(int c, char v) : m_color(c),m_value(v)
+Card::Card(int c, int v) : m_color(c),m_value(v)
 {
 }
 Card::Card()
