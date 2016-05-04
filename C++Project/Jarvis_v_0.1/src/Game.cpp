@@ -96,7 +96,62 @@ void Game::init(){
     if(verbose) cout << "Pour cette partie les atouts seront les " << COLORS[m_contract] << ". Prenez place." << endl;
 }
 
+void Game::resetBoard(){
+    int i;
+    for(i=0;i<4;i++){
+        board[i] = 0;
+    }
+}
+
 int Game::play(){
+    int turn, player, i, scorePli;
+
+    for(turn = 0; turn < 8; turn++){
+        m_turn = turn;
+
+        // Chaque joueur joue
+        for(player = 0; player<4; player++){
+            m_currentPlayer = player;
+            if(verbose) cout << "Joueur " << player << ", a votre tour." << endl;
+            board[player] = m_hands[player].play();
+        }
+
+        // Calcul des points
+        Card* currCard;
+        scorePli = 0;
+        int maxValue = -1, value, idWinner;
+        bool contract = false;
+
+        for(i = 0; i<4; i++){
+            currCard = board[i];
+            if(currCard->getColor() == m_contract){
+                value = VALUES_CONTRACT[currCard->getValue()];
+                scorePli += value;
+                contract = true;
+
+                if(maxValue < value){
+                    maxValue = value;
+                    idWinner = i;
+                }
+            }
+            else{
+                value = VALUES[currCard->getValue()];
+                scorePli += value;
+
+                if(!contract && (maxValue < value)){
+                    maxValue = value;
+                    idWinner = i;
+                }
+            }
+        }
+
+        m_scores[idWinner] += scorePli;
+    }
+
+    for(i = 0; i<4; i++){
+        cout << i << " = " << m_scores[i] << endl;
+    }
+
 
     return 0;
 }

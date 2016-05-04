@@ -14,12 +14,12 @@ class Card
 {
     public:
         Card();
-        Card(int c, char v);
+        Card(int c, int v);
         virtual ~Card();
         int getColor() { return m_color; }
         void setColor(int val) { m_color = val; }
-        char getValue() { return m_value; }
-        void setValue(char val) { m_value = val; }
+        int getValue() { return m_value; }
+        void setValue(int val) { m_value = val; }
         std::string toString(){return (NAMES[m_value]+COLORS[m_color]);}
     protected:
     private:
