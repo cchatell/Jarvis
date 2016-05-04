@@ -3,7 +3,7 @@
 
 #define NBPARTIES 100
 #include "Game.h"
-
+#include <pthread.h>
 
 class MonteCarlo
 {
