@@ -52,6 +52,10 @@ int main()
 
     cout << g.toString() << endl;
 
+    /*Hand h();
+    h.draw(&DECK[SPADE][TEN]);*/
+
+
     //g.getHand(0)->discard(1);
 
     //cout << g.toString() << endl;

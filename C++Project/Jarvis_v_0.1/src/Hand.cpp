@@ -45,6 +45,9 @@ Card* Hand::getCard(int index){
     return m_cards[index];
 }
 
+Card* Hand::play(){
+}
+
 string Hand::toString(){
     unsigned int i;
     string s1("");

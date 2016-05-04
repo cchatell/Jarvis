@@ -27,7 +27,7 @@ class Hand
 
         int getNumber(){return m_number;};
 
-        virtual Card* play()=0;
+        virtual Card* play();
     protected:
     private:
         std::vector<Card*> m_cards;
