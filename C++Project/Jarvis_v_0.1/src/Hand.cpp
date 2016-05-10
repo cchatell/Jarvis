@@ -1,6 +1,7 @@
 #include "Ultron.h"
-#include <cstdlib>
+#include <iostream>
 #include <ctime>
+
 using namespace std;
 
 Hand::Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8): m_type(n)
@@ -68,3 +69,5 @@ int Hand::containsColor(int c){
 
     return ret;
 }
+
+
