@@ -85,12 +85,12 @@ Card* MonteCarlo::launch()
     int maxi=*std::max_element(resultsPerCard,resultsPerCard+8);
     cout <<"max : "<<maxi<<endl;
 
-    Card maxCard;
+    Card* maxCard;
     int index=-1;
     for (i=0; i<8; i++)
     {
         if (resultsPerCard[i]==maxi) {
-        maxCard=*(m_game->getHand(0)->getCard(i));
+        maxCard=m_game->getHand(0)->getCard(i);
         index=i+1;
         break;
         }
@@ -98,6 +98,6 @@ Card* MonteCarlo::launch()
 
     }
 
-    cout << "meilleure carte : "<<index<<" ème carte de la main : "<< maxCard.toString()<<endl;
-    return &maxCard;
+    cout << "meilleure carte : "<<index<<" ème carte de la main : "<< maxCard->toString()<<endl;
+    return maxCard;
 }

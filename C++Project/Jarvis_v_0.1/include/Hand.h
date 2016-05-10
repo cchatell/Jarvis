@@ -27,7 +27,7 @@ class Hand
 
         std::vector<Card*> getCards() const {return m_cards;};
 
-        std::string toString();
+        std::string toString() const;
 
         int getNumber() const {return m_number;};
 

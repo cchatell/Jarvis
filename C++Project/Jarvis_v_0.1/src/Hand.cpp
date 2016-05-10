@@ -45,7 +45,7 @@ Card* Hand::getCard(int index)const {
     return m_cards[index];
 }
 
-string Hand::toString(){
+string Hand::toString()const{
     unsigned int i;
     string s1("");
     for (i=0;i<m_cards.size();i++){
