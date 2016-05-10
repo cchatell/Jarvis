@@ -9,6 +9,7 @@ class Hand
     public:
         Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8);
         Hand();
+        Hand(int n);
 
         Hand(const Hand &h);
 
@@ -29,24 +30,21 @@ class Hand
 
         std::string toString() const;
 
-        int getNumber() const {return m_number;};
+        int getType() const {return m_type;};
 
-        void setNumber(int n){m_number=n;};
+        void setType(int n){m_type=n;};
 
-        virtual Card* play(){ return 0;};
+        Card* play(Card* board[], int size);
 
+        Card* playRandom(Card* board[], int size);
+
+        //Card* playMontecarlo(Card* board[]);
+
+        int containsColor(int c);
     protected:
     private:
         std::vector<Card*> m_cards;
-        int m_number;
-
+        int m_type; // 0 : random, 1 : will play montecarlo
 };
 
-class IA_random : public Hand
-{
-    public:
-        IA_random(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8);
-        IA_random();
-        IA_random(const IA_random &i);
-        Card* play();
-};
+

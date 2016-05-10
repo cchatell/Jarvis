@@ -1,9 +1,9 @@
 #include "Ultron.h"
-
-
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-Hand::Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8): m_number(n)
+Hand::Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8): m_type(n)
 {
 
     this->m_cards.push_back(c1);
@@ -20,9 +20,13 @@ Hand::Hand()
 {
 }
 
+Hand::Hand(int n) : m_type(n)
+{
+}
+
 Hand::Hand(const Hand &h)
 {
-    m_number = h.m_number;
+    m_type = h.m_type;
     vector<Card*> new_(h.m_cards);
     m_cards = new_;
 }
@@ -56,31 +60,11 @@ string Hand::toString()const{
     return s1;
 }
 
-Card* Ultron::play(){
-    return 0;
-}
+int Hand::containsColor(int c){
+    int i, ret = 0;
+    for (i=0;i<m_cards.size();i++){
+        if(m_cards[i]->getColor() == c) ret = 1;
+    }
 
-IA_random::IA_random(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8):
-        Hand(n,c1, c2, c3,c4,c5,c6,c7,c8)
-{
-
-}
-
-IA_random::IA_random(){
-
-}
-
-IA_random::IA_random(const IA_random &i)
-{
-    setNumber(i.getNumber());
-    vector<Card*> new_(i.getCards());
-    setCards(new_);
-}
-
-
-Card* IA_random::play(){
-    return 0;
-}
-int GetRandNum(){
-    return (1 + rand() %(8 - 1 +1));
+    return ret;
 }
