@@ -27,3 +27,48 @@
 1460481505 source:d:\users\corentin\dropbox\3e_annee\ia\jarvis\c++project\jarvis_v_0.1\src\hand.cpp
 	"Hand.h"
 
+1462881804 source:/Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/main.cpp
+	<iostream>
+	"MonteCarlo.h"
+
+1462829287 /Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/include/MonteCarlo.h
+	"Game.h"
+	<pthread.h>
+
+1462829287 /Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/include/Game.h
+	"Hand.h"
+
+1462881664 /Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/include/Hand.h
+	<string>
+	<vector>
+	"Card.h"
+
+1462881804 /Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/include/Card.h
+	<string>
+
+1462880817 source:/Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/src/Card.cpp
+	"Card.h"
+
+1462881664 source:/Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/src/Hand.cpp
+	"Ultron.h"
+
+1462829287 /Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/include/Ultron.h
+	"MonteCarlo.h"
+
+1462881804 source:/Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/src/Game.cpp
+	"Game.h"
+	<cstdlib>
+	<time.h>
+	<iostream>
+	<sstream>
+	<vector>
+	<cstring>
+
+1462881664 source:/Users/CHENZIANG/Desktop/Jarvis/C++Project/Jarvis_v_0.1/src/MonteCarlo.cpp
+	"MonteCarlo.h"
+	<iostream>
+	<pthread.h>
+	<unistd.h>
+	<map>
+	<algorithm>
+

@@ -81,3 +81,6 @@ IA_random::IA_random(const IA_random &i)
 Card* IA_random::play(){
     return 0;
 }
+int GetRandNum(){
+    return (1 + rand() %(8 - 1 +1));
+}

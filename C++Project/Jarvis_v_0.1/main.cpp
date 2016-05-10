@@ -47,7 +47,7 @@ int main()
     for (i=0; i<32;i++){
         cout << jeu[i].toString()<<endl;
     }*/
-
+    Game g;
 
     cout << g.toString() << endl;
 

@@ -35,10 +35,16 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Card.h" />
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/Global.h" />
 		<Unit filename="include/Hand.h" />
+		<Unit filename="include/MonteCarlo.h" />
+		<Unit filename="include/Ultron.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Card.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Hand.cpp" />
+		<Unit filename="src/MonteCarlo.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
