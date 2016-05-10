@@ -105,6 +105,7 @@ void Game::resetBoard(){
 
 int Game::play(){
     int turn, player, i, scorePli;
+    int gagne;
 
     for(turn = 0; turn < 8; turn++){
         m_turn = turn;
@@ -124,7 +125,7 @@ int Game::play(){
 
         for(i = 0; i<4; i++){
             currCard = board[i];
-            if(currCard->getColor() == m_contract){
+            if(currCard->getColor() == m_contract){ // si il y a une carte de l'atout
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
                 contract = true;
@@ -152,6 +153,9 @@ int Game::play(){
         cout << i << " = " << m_scores[i] << endl;
     }
 
+    // L'IA est le joueur 0
+    if(m_scores[0]+m_scores[1] > m_scores[2]+m_scores[3]) gagne = 1;
+    else gagne = 0;
 
-    return 0;
+    return gagne;
 }

@@ -15,12 +15,12 @@ class Card
 {
     public:
         Card();
-        Card(int c, char v);
+        Card(int c, int v);
         virtual ~Card();
         int getColor() const { return m_color; }
         void setColor(int val) { m_color = val; }
-        char getValue() const{ return m_value; }
-        void setValue(char val) { m_value = val; }
+        int getValue() const{ return m_value; }
+        void setValue(int val) { m_value = val; }
         bool operator< (const Card& rhs){ return (this->getValue()<rhs.getValue() && this->getColor()<rhs.getColor());}
         Card(const Card &c);
         std::string toString()const {return (NAMES[m_value]+COLORS[m_color]);}
