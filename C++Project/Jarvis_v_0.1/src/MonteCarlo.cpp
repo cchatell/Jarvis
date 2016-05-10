@@ -24,10 +24,10 @@ void* do_loop(void* data)
 {
     int i;
     //MonteCarlo pour 100 parties
+    const Card *cardToTest = (Card*)data;
     for (i=0; i<1000; i++)
     {
 
-        const Card *cardToTest = (Card*)data;
         int winnerIndex=rand()%(1-0 + 1) + 0;;
 
         // A DECOMMENTER QUAND PLAY SERA IMPLEMENTE DANS GAME, on joue une partie
@@ -79,7 +79,7 @@ Card* MonteCarlo::launch()
         {
             resultsPerCard[i]+=*it;
         }
-        cout << resultsPerCard[i]<<endl;
+        //cout << resultsPerCard[i]<<endl;
     }
 
     int maxi=*std::max_element(resultsPerCard,resultsPerCard+8);
