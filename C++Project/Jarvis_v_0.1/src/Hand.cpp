@@ -83,6 +83,7 @@ Card* IA_random::play(){
     return 0;
 }
 
-int GetRandNum(){
-    return (1 + rand() %(8 - 1 +1));
+/*Get nombre random entre min et max */
+int GetRandNum(int min, int max){
+    return (min + rand() %(max - min +1));
 }
