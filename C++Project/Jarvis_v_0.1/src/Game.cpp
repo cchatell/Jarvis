@@ -5,7 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <cstring>
-
+#include <algorithm>
 
 using namespace std;
 
@@ -184,15 +184,8 @@ Card* Game::playRandom(){
             il joue une carte de cette famille
 
     */
-    if(m_currentPlayer == 0){
-        Card* ret = m_hands[m_currentPlayer].discard(GetRandNum(0, 8-m_turn));
-        return ret;
-    }  // si pas de carte on joue n'importe la quelle
-    else{
-        int color = board[0]->getColor();
 
 
-    }
 }
 
 int Game::isMaster(){
@@ -200,6 +193,69 @@ int Game::isMaster(){
 
     // sinon
         //c'est celui qui a la plus grosse carte de la famille demandée par la première carte
+
+    int i, ret = 0;
+    for (i=0;i<player;i++){
+        if(board[i]->getColor() == m_contract) ret = 1;
+    }
+     // si il y a de l'atout, c'est celui qui à posé la plus grosse d'atout qui gagne
+
+    if (ret){
+        //on copie les valeurs dans un tableau si c'est un atout et on prend le max
+        int val[4];
+        int i;
+        for(i=0; i<4;i++){
+            //on initialise la tableau à 0
+            val[i]=0;
+        }
+        for(i=0; i<player;i++){
+            if(board[i]->getColor()==m_contract)
+                val[i]=board[i]->getValue();
+        }
+        int maxi=*std::max_element(val,val+4);
+
+        Card* maxCard;
+        int index=-1;
+        for (i=0; i<4; i++)
+        {
+            if (board[i]->getValue()==maxi) {
+            maxCard=board[i];
+            index=i+1;
+            break;
+            }
+
+
+        }
+        return (m_firstPlayer+index)%4;
+    }else{
+    // il n'y a pas d'atout
+        //on copie les valeurs dans un tableau si c'est un atout et on prend le max
+        int val[4];
+        int i;
+        for(i=0; i<4;i++){
+            //on initialise la tableau à 0
+            val[i]=0;
+        }
+        for(i=0; i<player;i++){
+            if(board[i]->getColor()==board[0]->getColor())
+                val[i]=board[i]->getValue();
+        }
+        int maxi=*std::max_element(val,val+4);
+
+        Card* maxCard;
+        int index=-1;
+        for (i=0; i<4; i++)
+        {
+            if (board[i]->getValue()==maxi) {
+            maxCard=board[i];
+            index=i+1;
+            break;
+            }
+
+
+        }
+        return (m_firstPlayer+index)%4;
+    }
 }
 
 int Game::GetRandNum(int min, int max){
