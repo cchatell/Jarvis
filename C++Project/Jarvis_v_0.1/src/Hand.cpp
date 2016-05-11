@@ -70,4 +70,16 @@ int Hand::containsColor(int c){
     return ret;
 }
 
+vector<int> Hand::getIndexFromColor(int color){
+    vector<int> res;
+    int i;
+    for ( i = 0 ; i<8 ; i++){
+        if (m_cards[i]->getColor()==color){
+            res.push_back(i);
+        }
+    }
+    return res;
+
+}
+
 

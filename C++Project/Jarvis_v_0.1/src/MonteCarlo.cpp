@@ -28,12 +28,12 @@ void* do_loop(void* data)
     for (i=0; i<1000; i++)
     {
 
-        int winnerIndex=rand()%(1-0 + 1) + 0;;
+        //int winnerIndex=rand()%(1-0 + 1) + 0;;
 
         // A DECOMMENTER QUAND PLAY SERA IMPLEMENTE DANS GAME, on joue une partie
 
-        //winnerIndex=game.play(cardToTest);
-        scores[cardToTest].push_back(winnerIndex);
+        //int winnerIndex=Getgame()->play(cardToTest);
+        //scores[cardToTest].push_back(winnerIndex);
         //cout << pthread_self()<< ": "<< cardToTest->toString()<<" : "<< scores[cardToTest][i]<<"\n";
     }
     pthread_exit(NULL);

@@ -20,6 +20,8 @@ class Card
         int getColor() const { return m_color; }
         void setColor(int val) { m_color = val; }
         int getValue() const{ return m_value; }
+        int value(){ return VALUES[m_value];}
+        int valueContract(){ return VALUES_CONTRACT[m_value];}
         void setValue(int val) { m_value = val; }
         bool operator< (const Card& rhs){ return (this->getValue()<rhs.getValue() && this->getColor()<rhs.getColor());}
         Card(const Card &c);

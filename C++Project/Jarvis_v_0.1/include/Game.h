@@ -24,7 +24,10 @@ class Game{
         Card* playRandom();
 
         // 1 si l'equipe du joueur en cours est maitre
-        int isMaster();
+        int master();
+
+        int* highestValueBoard();
+
         int GetRandNum(int min, int max);
     private:
     // distribue les cartes

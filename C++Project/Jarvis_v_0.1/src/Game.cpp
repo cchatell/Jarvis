@@ -12,7 +12,8 @@ using namespace std;
 Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0)
 {
     int i=0;
-    while(i<4){
+    while(i<4)
+    {
         Hand h1(0);
         m_hands[i] = h1;
         m_scores[i++] = 0;
@@ -21,13 +22,15 @@ Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0)
     init();
 }
 
-Game::Game(const Game &g){
+Game::Game(const Game &g)
+{
     verbose = g.verbose;
     m_turn = g.m_turn;
     m_currentPlayer = g.m_currentPlayer;
     m_contract = g.m_contract;
     int i =0;
-    while(i<4){
+    while(i<4)
+    {
         m_scores[i] = g.m_scores[i];
         Hand h1=*(g.getConstHand(i));
         m_hands[i]= h1;
@@ -35,10 +38,12 @@ Game::Game(const Game &g){
     }
 }
 
-Game::~Game(){
+Game::~Game()
+{
 }
 
-void Game::init(){
+void Game::init()
+{
     if(verbose)
         cout << "Très bien monsieur. Le ciel est dégagé." << endl;
 
@@ -48,19 +53,24 @@ void Game::init(){
     if(verbose) cout << "Pour cette partie les atouts seront les " << COLORS[m_contract] << ". Prenez place." << endl;
 }
 
-void Game::shuffle(){
+void Game::shuffle()
+{
     vector<Card*> jeu(32);
     int i,j,c;
     srand(time(NULL));
 
-    for (i=0;i<4;i++){
-        for (j=0;j<8;j++){
+    for (i=0; i<4; i++)
+    {
+        for (j=0; j<8; j++)
+        {
             jeu[(i*8+j)]= const_cast<Card*>(&DECK[i][j]);
         }
     }
 
-    for(i = 0; i<8; i++){
-        for(j=0; j<4; j++){
+    for(i = 0; i<8; i++)
+    {
+        for(j=0; j<4; j++)
+        {
             c = rand()%(32-(i*4)-j);
             m_hands[j].draw(jeu[c]);
             jeu.erase(jeu.begin()+c);
@@ -70,7 +80,8 @@ void Game::shuffle(){
     m_contract = rand()%4;
 }
 
-string Game::toString(){
+string Game::toString()
+{
     ostringstream oss;
 
     oss << "Contract : " << COLORS[m_contract] << endl;
@@ -82,38 +93,46 @@ string Game::toString(){
     return oss.str();
 }
 
-const Hand* Game::getConstHand  (int index)const{
+const Hand* Game::getConstHand  (int index)const
+{
     return (&(m_hands[index]));
 }
 
-Hand* Game::getHand(int index){
+Hand* Game::getHand(int index)
+{
     return (&(m_hands[index]));
 }
 
-void Game::setVerbose(int v){
+void Game::setVerbose(int v)
+{
     verbose = v;
 }
 
-void Game::resetBoard(){
+void Game::resetBoard()
+{
     int i;
-    for(i=0;i<4;i++){
+    for(i=0; i<4; i++)
+    {
         board[i] = 0;
     }
 }
 
-int Game::launch(){
+int Game::launch()
+{
     int turn, i, scorePli;
     int gagne;
 
-    for(turn = 0; turn < 8; turn++){
+    for(turn = 0; turn < 8; turn++)
+    {
         m_turn = turn;
         resetBoard();
 
         m_currentPlayer = m_firstPlayer;
         // Chaque joueur joue
-        for(player = 0; player<4; player++){
+        for(player = 0; player<4; player++)
+        {
             m_currentPlayer = (m_currentPlayer+1)%4;
-            if(verbose) cout << "Joueur " << player << ", a votre tour." << endl;
+            if(verbose) cout << "Joueur " << m_currentPlayer << ", a votre tour." << endl;
             board[player] = play();
         }
 
@@ -123,23 +142,28 @@ int Game::launch(){
         int maxValue = -1, value, idWinner;
         bool contract = false;
 
-        for(i = 0; i<4; i++){
+        for(i = 0; i<4; i++)
+        {
             currCard = board[i];
-            if(currCard->getColor() == m_contract){ // si il y a une carte de l'atout
+            if(currCard->getColor() == m_contract)  // si il y a une carte de l'atout
+            {
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
                 contract = true;
 
-                if(maxValue < value){
+                if(maxValue < value)
+                {
                     maxValue = value;
                     idWinner = i;
                 }
             }
-            else{
+            else
+            {
                 value = VALUES[currCard->getValue()];
                 scorePli += value;
 
-                if(!contract && (maxValue < value)){
+                if(!contract && (maxValue < value))
+                {
                     maxValue = value;
                     idWinner = i;
                 }
@@ -150,7 +174,8 @@ int Game::launch(){
         m_firstPlayer = idWinner;
     }
 
-    for(i = 0; i<4; i++){
+    for(i = 0; i<4; i++)
+    {
         cout << i << " = " << m_scores[i] << endl;
     }
 
@@ -162,102 +187,125 @@ int Game::launch(){
     return gagne;
 }
 
-Card* Game::play(){
+Card* Game::play()
+{
     if(m_hands[m_currentPlayer].getType() == 0) return playRandom();
 }
 
-Card* Game::playRandom(){
+Card* Game::playRandom()
+{
 
-    /*
-    si l'équipe du joueur qui joue est maitre
-        si il a une carte de la famille demandée par la première carte
-            il joue une carte de cette famille
-        sinon
-            n'importe quelle autre carte
-    sinon
-        si il a pas une carte de la famille demandée par la première carte
-            si il a de l'atout
-                il joue de l'atout
-            sinon
-                il jour n'importe quelle carte
-        sinon
-            il joue une carte de cette famille
-
-    */
-
-
-}
-
-int Game::isMaster(){
-    // si il y a de l'atout, c'est celui qui à posé la plus grosse d'atout qui gagne
-
-    // sinon
-        //c'est celui qui a la plus grosse carte de la famille demandée par la première carte
-
-    int i, ret = 0;
-    for (i=0;i<player;i++){
-        if(board[i]->getColor() == m_contract) ret = 1;
+    int colorAsked = board[0]->getColor();
+    Hand* actualHand = &m_hands[m_currentPlayer];
+    int* highestValue = highestValueBoard();
+    if(board[0] == 0)  // si premier a jouer, on joue n'importe quelle carte
+    {
+        int i = GetRandNum(0,8-m_turn);
+        return actualHand->discard(i);
     }
-     // si il y a de l'atout, c'est celui qui à posé la plus grosse d'atout qui gagne
+    else if(actualHand->containsColor(colorAsked))  // Si il a la bonne couleur, joue parmi celles ci (si atout, + haut, sinon n'imp)
+    {
+        // On récupère les index des cartes de la bonne couleur
+        vector<int> index = actualHand->getIndexFromColor(colorAsked);
+        vector<int> tmp;
 
-    if (ret){
-        //on copie les valeurs dans un tableau si c'est un atout et on prend le max
-        int val[4];
-        int i;
-        for(i=0; i<4;i++){
-            //on initialise la tableau à 0
-            val[i]=0;
-        }
-        for(i=0; i<player;i++){
-            if(board[i]->getColor()==m_contract)
-                val[i]=board[i]->getValue();
-        }
-        int maxi=*std::max_element(val,val+4);
-
-        Card* maxCard;
-        int index=-1;
-        for (i=0; i<4; i++)
+        if(colorAsked==m_contract)
         {
-            if (board[i]->getValue()==maxi) {
-            maxCard=board[i];
-            index=i+1;
-            break;
+            for(std::vector<int>::iterator it = index.begin(); it != index.end(); ++it)
+            {
+                if(actualHand->getCard(*it)->valueContract() > highestValue[1]) tmp.push_back(*it);
             }
-
-
+            if(tmp.size() != 0) index = tmp;
         }
-        return (m_firstPlayer+index)%4;
-    }else{
-    // il n'y a pas d'atout
-        //on copie les valeurs dans un tableau si c'est un atout et on prend le max
-        int val[4];
-        int i;
-        for(i=0; i<4;i++){
-            //on initialise la tableau à 0
-            val[i]=0;
-        }
-        for(i=0; i<player;i++){
-            if(board[i]->getColor()==board[0]->getColor())
-                val[i]=board[i]->getValue();
-        }
-        int maxi=*std::max_element(val,val+4);
+        return actualHand->discard(index[GetRandNum(0,index.size())]);
+    }
+    else
+    {
+        //sinon
+        //si pas maitre, et a de l'atout,
+        // pose l'atout forcément plus haut si il y a déjà un atout sinon atout plus bas
 
-        Card* maxCard;
-        int index=-1;
-        for (i=0; i<4; i++)
-        {
-            if (board[i]->getValue()==maxi) {
-            maxCard=board[i];
-            index=i+1;
-            break;
+        if (actualHand->containsColor(m_contract)){ // si il a de l'atout
+            if(player == 1 || !(highestValue[0] == player-2)){ // pas maitre
+                vector<int> index = actualHand->getIndexFromColor(m_contract);
+                vector<int> tmp;
+                for(std::vector<int>::iterator it = index.begin(); it != index.end(); ++it)
+                {
+                    if(actualHand->getCard(*it)->valueContract() > highestValue[1]) tmp.push_back(*it);
+                }
+                if(tmp.size() != 0) index = tmp;
+                return actualHand->discard(index[GetRandNum(0,index.size())]);
             }
+            else{ // maitre
+                vector<int> tmp;
+                Card* c;
+                int trouve = 0;
+                for(int i = 0; i <8-m_turn; ++i)
+                {
+                    c = actualHand->getCard(i);
+                    if(c->getColor() != m_contract || (c->getColor() == m_contract && c->valueContract() > highestValue[1])){
+                        tmp.push_back(i);
+                        if(c->getColor() == m_contract && c->valueContract() > highestValue[1]) trouve = 1;
+                    }
+                }
 
-
+                if(trouve){
+                    return actualHand->discard(tmp[GetRandNum(0,tmp.size())]);
+                }
+                else{
+                    return actualHand->discard(GetRandNum(0,8-m_turn));
+                }
+            }
         }
-        return (m_firstPlayer+index)%4;
+        else{ //IL A PAS D'ATOUT
+            int i = GetRandNum(0,8-m_turn);
+            return actualHand->discard(i);
+        }//sinon pose n'imp, sauf les atouts moins forts
     }
 }
 
-int Game::GetRandNum(int min, int max){
+// Le numero du joueur maitre du pli
+int Game::master()
+{
+    int* val = highestValueBoard();
+    return (m_firstPlayer+val[0])%4;
+}
+
+int* Game::highestValueBoard()
+{
+    int ret[2]; // 0: index, 1: valeur
+    ret[0] = -1;
+    ret[1] = -1;
+    int cont = 0;
+    for(int i = 0; i < player; i++)
+    {
+        if(m_contract != board[i]->getColor() && board[i]->getColor() == board[0]->getColor())  // Si pas de la couleur de l'atout et de la couleur demandée
+        {
+            if(!cont && ret[1] < board[i]->value())  // si pas encore d'atout, et valeur plus grande
+            {
+                ret[1] = board[i]->value(); // c'est le max
+                ret[0] = i;
+            }
+        }
+        else if(m_contract == board[i]->getColor())  // sinon (couleur = atout)
+        {
+            if(!cont)  // si c'est le premier atout, c'est le max
+            {
+                ret[1] = board[i]->valueContract();
+                cont = 1;
+                ret[0] = i;
+            }
+            else if(ret[1] < board[i]->valueContract())  // sinon, si la valeur est plus grande, c'est le max
+            {
+                ret[1] = board[i]->valueContract();
+                ret[0] = i;
+            }
+        }
+    }
+    return ret;
+}
+
+int Game::GetRandNum(int min, int max)
+{
     return (min + rand() %(max - min + 1));
 }

@@ -41,6 +41,8 @@ class Hand
         //Card* playMontecarlo(Card* board[]);
 
         int containsColor(int c);
+
+        std::vector<int> getIndexFromColor(int color);
     protected:
     private:
         std::vector<Card*> m_cards;
