@@ -36,7 +36,7 @@ class Game{
         int master();
 
         int* highestValueBoard();
-
+        int launchAndPrint();
         int GetRandNum(int min, int max);
     private:
     // distribue les cartes

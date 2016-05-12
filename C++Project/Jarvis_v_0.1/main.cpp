@@ -61,7 +61,32 @@ int main()
     cout <<(tot/i)*100<<"%"<<endl;
     }
     */
+
+    /*
+
+    POUR TESTER LE POURCENTAGE DE VICTOIRE
+    int i=0;
+    double tot=0;
+    int res=0;
+    for (i=1;i<101;i++){
+            Game g;
+            res=g.launch();
+            tot+=res;
+            if (res) cout<<"L'IA remporte la partie "<<i<<" !"<<endl;
+            else cout <<"L'IA perd la partie "<<i<<" !"<<endl;
+            cout <<(tot/i)*100<<"%"<<endl;
+    }
+    */
+
+    /*
+
+    POUR AVOIR l'AFFICHAGE DE LA PARTIE
+ */
     Game g;
-    g.launch();
+    cout << g.toString()<<endl<<endl;
+    int v=g.launchAndPrint();
+    if (v) cout<<"L'IA remporte la partie!"<<endl;
+    else cout <<"defaite..."<<endl;
+
     return 0;
 }
