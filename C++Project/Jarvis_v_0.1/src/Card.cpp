@@ -16,3 +16,7 @@ Card::Card(const Card &c){
     m_color=c.getColor();
     m_value=c.getValue();
 }
+
+bool Card::equals(Card const& b){
+    return (getColor()==b.getColor() && getValue()==b.getValue());
+ }

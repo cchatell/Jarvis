@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "MonteCarlo.h"
+#include "Game.h"
 using namespace std;
 
 int main()
@@ -47,18 +47,21 @@ int main()
     for (i=0; i<32;i++){
         cout << jeu[i].toString()<<endl;
     }*/
+    /*
+    int results[100];
+
+    int i=1;
+    double tot=0;
+    for (i;i<101;i++){
+     Game g;
+    results[i]=g.launch();
+    cout <<" partie numéro "<<i<<" :"<<results[i]<<endl;
+    tot+=results[i];
+
+    cout <<(tot/i)*100<<"%"<<endl;
+    }
+    */
     Game g;
-
-    cout << g.toString() << endl;
-
-    /*Hand h();
-    h.draw(&DECK[SPADE][TEN]);*/
-
-
-    //g.getHand(0)->discard(1);
-
-    //cout << g.toString() << endl;
-
-
+    g.launch();
     return 0;
 }

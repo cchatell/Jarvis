@@ -14,6 +14,7 @@ const int VALUES_CONTRACT[8] = {11, 10, 4, 3, 20, 14, 0, 0};
 class Card
 {
     public:
+    bool equals(const Card &h);
         Card();
         Card(int c, int v);
         virtual ~Card();

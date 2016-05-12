@@ -26,6 +26,8 @@ class Hand
 
         void setCards(std::vector<Card*> c){m_cards=c;};
 
+        int getIndexFromCard(Card* c);
+
         std::vector<Card*> getCards() const {return m_cards;};
 
         std::string toString() const;

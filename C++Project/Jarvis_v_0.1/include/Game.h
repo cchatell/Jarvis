@@ -2,6 +2,8 @@
 
 #include "Hand.h"
 
+
+
 class Game{
     public:
         Game();
@@ -13,7 +15,8 @@ class Game{
         const Hand* getConstHand  (int index)const;
         Hand* getHand(int index);
         void setVerbose(int v);
-
+        int getPlayer()const {return player;};
+        int getFirstPlayer()const {return m_firstPlayer;};
         // fait tourner tout le jeu
         int launch();
 
@@ -22,6 +25,12 @@ class Game{
 
         // fait jouer un joueur aleatoirement
         Card* playRandom();
+
+        // Joue en utilisant Montecarlo
+        Card* playMontecarlo();
+
+        //jouer une carte, incrémenter les compeurs de tour de jeu et continuer
+        int playCard(int index);
 
         // 1 si l'equipe du joueur en cours est maitre
         int master();
@@ -64,3 +73,5 @@ class Game{
         // nb de joueurs qui ont joue ce tour
         int player;
 };
+
+Card* MonteCarlo_launch(Game * game, int turn);

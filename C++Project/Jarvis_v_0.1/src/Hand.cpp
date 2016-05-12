@@ -25,12 +25,20 @@ Hand::Hand(int n) : m_type(n)
 {
 }
 
+int Hand::getIndexFromCard(Card* c){
+    int i;
+    for (i=0;i<m_cards.size();i++){
+        if (m_cards[i]->equals(*c)) return i;
+    }
+}
+
 Hand::Hand(const Hand &h)
 {
     m_type = h.m_type;
     vector<Card*> new_(h.m_cards);
     m_cards = new_;
 }
+
 
 Hand::~Hand()
 {
@@ -42,6 +50,7 @@ void Hand::draw(Card* c){
 
 Card* Hand::discard(int index){
     Card* c = m_cards[index];
+
     m_cards.erase(m_cards.begin()+index);
     return c;
 }
@@ -73,7 +82,7 @@ int Hand::containsColor(int c){
 vector<int> Hand::getIndexFromColor(int color){
     vector<int> res;
     int i;
-    for ( i = 0 ; i<8 ; i++){
+    for ( i = 0; i<m_cards.size() ; i++){
         if (m_cards[i]->getColor()==color){
             res.push_back(i);
         }
