@@ -130,7 +130,7 @@ void Game::resetBoard()
 
 int Game::launch()
 {
-    int turn = m_turn, i, scorePli;
+int turn = m_turn, i, scorePli;
     int gagne;
 
     for(turn; turn < 8; turn++)
@@ -144,7 +144,6 @@ int Game::launch()
             if(verbose) cout << "Joueur " << m_currentPlayer << ", a votre tour." << endl;
             Card* c = play();
             board[player]=c;
-            //cout<<"Joueur :" << m_currentPlayer<< "joue la carte"<<c->toString()<<endl;
             m_currentPlayer = (m_currentPlayer+1)%4;
         }
         player = 0;
@@ -158,8 +157,15 @@ int Game::launch()
         for(i = 0; i<4; i++)
         {
             currCard = board[i];
-            if(currCard->getColor() == m_contract)  // si il y a une carte de l'atout
+            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en as pas encore eu alors elle gagne
             {
+                value = VALUES_CONTRACT[currCard->getValue()];
+                scorePli += value;
+                contract = true;
+                maxValue = value;
+                idWinner = (m_firstPlayer+i)%4;
+            }
+            else if (currCard->getColor() == m_contract && contract){// si c'est une carte d'atout et qu'il y en déjà eu on fait le max
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
                 contract = true;
@@ -167,10 +173,10 @@ int Game::launch()
                 if(maxValue < value)
                 {
                     maxValue = value;
-                    idWinner = i;
+                    idWinner = (m_firstPlayer+i)%4;
+
                 }
-            }
-            else
+            }else
             {
                 value = VALUES[currCard->getValue()];
                 scorePli += value;
@@ -178,12 +184,15 @@ int Game::launch()
                 if(!contract && (maxValue < value))
                 {
                     maxValue = value;
-                    idWinner = i;
+                    idWinner =(m_firstPlayer+i)%4;;
                 }
             }
         }
+
+        //10 de der: le dernier pli à 10 points de plus
         if (turn ==7) scorePli+=10;
         m_scores[idWinner] += scorePli;
+
         m_firstPlayer = idWinner;
         m_currentPlayer = m_firstPlayer;
         resetBoard();
@@ -233,8 +242,15 @@ int Game::launchAndPrint()
         for(i = 0; i<4; i++)
         {
             currCard = board[i];
-            if(currCard->getColor() == m_contract)  // si il y a une carte de l'atout
+            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en as pas encore eu alors elle gagne
             {
+                value = VALUES_CONTRACT[currCard->getValue()];
+                scorePli += value;
+                contract = true;
+                maxValue = value;
+                idWinner = (m_firstPlayer+i)%4;
+            }
+            else if (currCard->getColor() == m_contract && contract){// si c'est une carte d'atout et qu'il y en déjà eu on fait le max
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
                 contract = true;
@@ -242,10 +258,10 @@ int Game::launchAndPrint()
                 if(maxValue < value)
                 {
                     maxValue = value;
-                    idWinner = i;
+                    idWinner = (m_firstPlayer+i)%4;
+
                 }
-            }
-            else
+            }else
             {
                 value = VALUES[currCard->getValue()];
                 scorePli += value;
@@ -253,7 +269,7 @@ int Game::launchAndPrint()
                 if(!contract && (maxValue < value))
                 {
                     maxValue = value;
-                    idWinner = i;
+                    idWinner =(m_firstPlayer+i)%4;;
                 }
             }
         }
