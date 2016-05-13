@@ -188,12 +188,12 @@ int Game::launch()
         m_currentPlayer = m_firstPlayer;
         resetBoard();
     }
-/*
-    for(i = 0; i<4; i++)
-    {
-        cout << i << " = " << m_scores[i] << endl;
-    }
-*/
+    /*
+        for(i = 0; i<4; i++)
+        {
+            cout << i << " = " << m_scores[i] << endl;
+        }
+    */
     // L'IA est le joueur 0
     // equipes 0,1 ; 2,3
     if(m_scores[0]+m_scores[2] > m_scores[1]+m_scores[3]) gagne = 1;
@@ -267,12 +267,12 @@ int Game::launchAndPrint()
         m_currentPlayer = m_firstPlayer;
         resetBoard();
     }
-/*
-    for(i = 0; i<4; i++)
-    {
-        cout << i << " = " << m_scores[i] << endl;
-    }
-*/
+    /*
+        for(i = 0; i<4; i++)
+        {
+            cout << i << " = " << m_scores[i] << endl;
+        }
+    */
     // L'IA est le joueur 0
     // equipes 0,1 ; 2,3
     if(m_scores[0]+m_scores[2] > m_scores[1]+m_scores[3]) gagne = 1;
@@ -288,7 +288,8 @@ Card* Game::play()
     else if(m_hands[m_currentPlayer].getType() == 1) return playMontecarlo();
 }
 
-Card* Game::playMontecarlo(){
+Card* Game::playMontecarlo()
+{
     Card* c= MonteCarlo_launch(this, m_turn);
     int index=getHand(0)->getIndexFromCard(c);
     return getHand(0)->discard(index);
@@ -311,11 +312,28 @@ int Game::playCard(int index)
 
 Card* Game::playRandom()
 {
+     Hand* actualHand = &m_hands[m_currentPlayer];
+     vector<int> index(playableCardsIndex());
+    return actualHand->discard(index[GetRandNum(0,index.size())]);
+}
+
+vector<int> Game::playableCardsIndex()
+{
     Hand* actualHand = &m_hands[m_currentPlayer];
+
+    // n'importe quelle carte de la main;
+    int a;
+    vector<int> i;
+    vector<Card*> v = actualHand->getCards();
+    for(a=0; a<v.size();a++)
+    {
+        i.push_back(a);
+    }
+
+
     if(board[0] == 0)  // si premier a jouer, on joue n'importe quelle carte
     {
-        int i = GetRandNum(0,8-m_turn);
-        return actualHand->discard(i);
+        return i;
     }
     else
     {
@@ -339,8 +357,7 @@ Card* Game::playRandom()
                 if(tmp.size() != 0) index = tmp;
             }
 
-            int indexCardToPlay = GetRandNum(0,index.size());
-            return actualHand->discard(index[indexCardToPlay]);
+            return index;
         }
         else
         {
@@ -359,7 +376,7 @@ Card* Game::playRandom()
                         if(actualHand->getCard(*it)->valueContract() > highestValue[1]) tmp.push_back(*it);
                     }
                     if(tmp.size() != 0) index = tmp;
-                    return actualHand->discard(index[GetRandNum(0,index.size())]);
+                    return index;
                 }
                 else  // maitre
                 {
@@ -378,18 +395,17 @@ Card* Game::playRandom()
 
                     if(trouve)
                     {
-                        return actualHand->discard(tmp[GetRandNum(0,tmp.size())]);
+                        return tmp;
                     }
                     else
                     {
-                        return actualHand->discard(GetRandNum(0,8-m_turn));
+                        return i;//on joue nimp
                     }
                 }
             }
             else  //IL A PAS D'ATOUT
             {
-                int i = GetRandNum(0,8-m_turn);
-                return actualHand->discard(i);
+                return i; //on joue nimp
             }//sinon pose n'imp, sauf les atouts moins forts
         }
     }
@@ -444,7 +460,8 @@ int Game::GetRandNum(int min, int max)
 //scores
 map<const Card*,std::vector<int> > scores;
 
-struct thread_arg{
+struct thread_arg
+{
     Card* cardToTest;
     Game* g;
     int index;
@@ -482,7 +499,8 @@ Card* MonteCarlo_launch(Game * game, int turn)
     pthread_t threads[8];
     //cout << "lancement de monteCarlo..."<<endl<<endl;
     //pour chaque carte de notre main on lance un thread pour faire x parties et on regarde
-    for (i=0; i<8-turn; i++)
+    vector<int> cardsToTest(game->playableCardsIndex());
+    for (i=0; i<cardsToTest.size(); i++)
     {
         pthread_t p_thread;
         int thr_id;
@@ -490,7 +508,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
         pthread_attr_init(&attr);
 
         struct thread_arg* args = (struct thread_arg *)malloc(sizeof(struct thread_arg));
-        args->cardToTest=game->getHand(0)->getCard(i);
+        args->cardToTest=game->getHand(0)->getCard(cardsToTest[i]);
         args->g=game;
         args->index=i;
 
@@ -500,14 +518,14 @@ Card* MonteCarlo_launch(Game * game, int turn)
 
     }
 
-    for (i=0; i<8-turn; i++)
+    for (i=0; i<cardsToTest.size(); i++)
     {
         //on attend que tout le monde ait fini
         (void) pthread_join(threads[i], NULL);
     }
 
 
-    int resultsPerCard[8]={0,0,0,0,0,0,0,0};
+    int resultsPerCard[8]= {0,0,0,0,0,0,0,0};
     //on calcule la carte ou on a le plus gagner
 
 
@@ -529,7 +547,8 @@ Card* MonteCarlo_launch(Game * game, int turn)
     int index=-1;
     for (i=0; i<8-turn; i++)
     {
-        if (resultsPerCard[i]==maxi) {
+        if (resultsPerCard[i]==maxi)
+        {
             maxCard=game->getHand(0)->getCard(i);
             index=i+1;
             break;

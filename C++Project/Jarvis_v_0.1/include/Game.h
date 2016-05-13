@@ -35,7 +35,12 @@ class Game{
         // 1 si l'equipe du joueur en cours est maitre
         int master();
 
+        //renvoi un vecteur avex l'index des cartes jouables
+        std::vector<int> playableCardsIndex();
+
         int* highestValueBoard();
+
+        //lance une partie et affiche cette partie
         int launchAndPrint();
         int GetRandNum(int min, int max);
     private:
