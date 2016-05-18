@@ -14,14 +14,19 @@ using namespace std;
 
 Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0), player(0)
 {
-    int i=0;
+
     Hand h1(1);
-    m_hands[i] = h1;
-    m_scores[i++] = 0;
+    Hand h2(0);
+    Hand h3(1);
+    Hand h4(0);
+    m_hands[0]=h1;
+    m_hands[1]=h2;
+    m_hands[2]=h3;
+    m_hands[3]=h4;
+
+    int i=0;
     while(i<4)
     {
-        Hand h1(0);
-        m_hands[i] = h1;
         m_scores[i++] = 0;
     }
 
@@ -283,14 +288,14 @@ int Game::launchAndPrint()
         m_currentPlayer = m_firstPlayer;
         resetBoard();
     }
-    /*
-        for(i = 0; i<4; i++)
-        {
-            cout << i << " = " << m_scores[i] << endl;
-        }
-    */
+
+    for(i = 0; i<4; i++)
+    {
+        cout << i << " = " << m_scores[i] << endl;
+    }
+
     // L'IA est le joueur 0
-    // equipes 0,1 ; 2,3
+    // equipes 0,2 ; 1,3
     if(m_scores[0]+m_scores[2] > m_scores[1]+m_scores[3]) gagne = 1;
     else gagne = 0;
 
@@ -307,8 +312,8 @@ Card* Game::play()
 Card* Game::playMontecarlo()
 {
     Card* c= MonteCarlo_launch(this, m_turn);
-    int index=getHand(0)->getIndexFromCard(c);
-    return getHand(0)->discard(index);
+    int index=getHand(m_currentPlayer)->getIndexFromCard(c);
+    return getHand(m_currentPlayer)->discard(index);
 }
 
 int Game::playCard(int index)
@@ -320,17 +325,28 @@ int Game::playCard(int index)
     //cout << "carte teste"
     //joueur suivant
     player++;
-    m_currentPlayer = (m_currentPlayer+1)%4;
 
     actualHand->setType(0);
+    m_hands[(m_currentPlayer+2)%4].setType(0);
+
+    m_currentPlayer = (m_currentPlayer+1)%4;
     return launch();
 }
 
 Card* Game::playRandom()
 {
-     Hand* actualHand = &m_hands[m_currentPlayer];
-     vector<int> index(playableCardsIndex());
-    return actualHand->discard(index[GetRandNum(0,index.size())]);
+    Hand* actualHand = &m_hands[m_currentPlayer];
+    vector<int> index(playableCardsIndex());
+
+    try{
+        int toPlay = GetRandNum((int)index.size());
+        return actualHand->discard(index[toPlay]);
+    }
+    catch(std::exception const& e)
+    {
+        cout << "index : " << index.size() << endl;
+        cerr << "ERREUR : " << e.what() << endl;
+    }
 }
 
 vector<int> Game::playableCardsIndex()
@@ -468,9 +484,9 @@ int* Game::highestValueBoard()
     return ret;
 }
 
-int Game::GetRandNum(int min, int max)
+int Game::GetRandNum(int max)
 {
-    return (min + rand() %(max - min));
+    return (rand()%max);
 }
 
 //scores
@@ -524,7 +540,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
         pthread_attr_init(&attr);
 
         struct thread_arg* args = (struct thread_arg *)malloc(sizeof(struct thread_arg));
-        args->cardToTest=game->getHand(0)->getCard(cardsToTest[i]);
+        args->cardToTest=game->getHand(game->getCurrentPlayer())->getCard(cardsToTest[i]);
         args->g=game;
         args->index=i;
 
@@ -547,7 +563,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
 
     for (i=0; i<8-turn; i++)
     {
-        Card* c1= game->getHand(0)->getCard(i);
+        Card* c1= game->getHand(game->getCurrentPlayer())->getCard(i);
 
         for(std::vector<int>::iterator it = scores[c1].begin(); it != scores[c1].end(); ++it)
         {
@@ -565,7 +581,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
     {
         if (resultsPerCard[i]==maxi)
         {
-            maxCard=game->getHand(0)->getCard(i);
+            maxCard=game->getHand(game->getCurrentPlayer())->getCard(i);
             index=i+1;
             break;
         }

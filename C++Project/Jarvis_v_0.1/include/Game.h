@@ -16,6 +16,7 @@ class Game{
         Hand* getHand(int index);
         void setVerbose(int v);
         int getPlayer()const {return player;};
+        int getCurrentPlayer()const {return m_currentPlayer;};
         int getFirstPlayer()const {return m_firstPlayer;};
         // fait tourner tout le jeu
         int launch();
@@ -42,7 +43,7 @@ class Game{
 
         //lance une partie et affiche cette partie
         int launchAndPrint();
-        int GetRandNum(int min, int max);
+        int GetRandNum(int max);
     private:
     // distribue les cartes
         void shuffle();
