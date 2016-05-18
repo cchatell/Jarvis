@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include "Game.h"
 using namespace std;
@@ -84,9 +85,9 @@ int main()
  */
 
     double win = 0;
-    for(int i = 1; i<101; i++){
+    for(int i = 1; i<1001; i++){
         Game g;
-        cout << g.toString()<<endl<<endl;
+        //cout << g.toString()<<endl<<endl;
         int v=g.launch();
         if (v){
             cout<<"L'IA remporte la partie!"<<endl;
@@ -95,6 +96,15 @@ int main()
         else cout <<"defaite..."<<endl;
         cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties." << endl;
     }
+    ofstream myfile;
+    myfile.open("./results.txt",ios::app);
+    myfile << "1000 parties, Montecarlo 250 : " << win << "% de win.\n";
+    myfile.close();
+
+    // 100 parties, Montecarlo 10000 : 70% de win
+    // 100 parties, Montecarlo 1000 : 64% de win
+    // 100 parties, Montecarlo 1000 : 63% de win
+    // 100 parties, Montecarlo 1000 : 69% de win
 
     return 0;
 }

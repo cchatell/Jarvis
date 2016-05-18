@@ -502,7 +502,7 @@ void* do_loop(void* data)
     struct thread_arg *args = (struct thread_arg *)data;
     Game originalGame=*(args->g);
     //const Card *cardToTest = (Card*)data;
-    for (i=0; i<10000; i++)
+    for (i=0; i<250; i++)
     {
         Game testGame=originalGame;
         //int winnerIndex=rand()%(1-0 + 1) + 0;;
