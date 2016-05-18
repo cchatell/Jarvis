@@ -135,7 +135,7 @@ void Game::resetBoard()
 
 int Game::launch()
 {
-int turn = m_turn, i, scorePli;
+    int turn = m_turn, i, scorePli;
     int gagne;
 
     for(turn; turn < 8; turn++)
@@ -146,11 +146,11 @@ int turn = m_turn, i, scorePli;
         // Chaque joueur joue
         for(player; player<4; player++)
         {
-            if(verbose) cout << "Joueur " << m_currentPlayer << ", a votre tour." << endl;
             Card* c = play();
             board[player]=c;
             m_currentPlayer = (m_currentPlayer+1)%4;
         }
+
         player = 0;
 
         // Calcul des points
@@ -162,7 +162,7 @@ int turn = m_turn, i, scorePli;
         for(i = 0; i<4; i++)
         {
             currCard = board[i];
-            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en as pas encore eu alors elle gagne
+            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en a pas encore eu alors elle gagne
             {
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
@@ -199,17 +199,13 @@ int turn = m_turn, i, scorePli;
         m_scores[idWinner] += scorePli;
 
         m_firstPlayer = idWinner;
+
         m_currentPlayer = m_firstPlayer;
         resetBoard();
     }
-    /*
-        for(i = 0; i<4; i++)
-        {
-            cout << i << " = " << m_scores[i] << endl;
-        }
-    */
+
     // L'IA est le joueur 0
-    // equipes 0,1 ; 2,3
+    // equipes 0,2 ; 1,3
     if(m_scores[0]+m_scores[2] > m_scores[1]+m_scores[3]) gagne = 1;
     else gagne = 0;
 
@@ -229,7 +225,6 @@ int Game::launchAndPrint()
         // Chaque joueur joue
         for(player; player<4; player++)
         {
-            if(verbose) cout << "Joueur " << m_currentPlayer << ", a votre tour." << endl;
             Card* c = play();
             board[player]=c;
             cout<<"Joueur : " << m_currentPlayer<< " joue la carte "<<c->toString()<<endl;
@@ -247,7 +242,7 @@ int Game::launchAndPrint()
         for(i = 0; i<4; i++)
         {
             currCard = board[i];
-            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en as pas encore eu alors elle gagne
+            if(currCard->getColor() == m_contract && !contract)  // si c'est une carte d'atout mais qu'il n'y en a pas encore eu alors elle gagne
             {
                 value = VALUES_CONTRACT[currCard->getValue()];
                 scorePli += value;
@@ -571,6 +566,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
         }
         //cout << resultsPerCard[i]<<endl;
     }
+    scores.clear();
 
     int maxi=*std::max_element(resultsPerCard,resultsPerCard+8-turn);
     //cout <<"max : "<<maxi<<endl;

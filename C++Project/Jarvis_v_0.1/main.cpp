@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cstdlib>
 #include "Game.h"
 using namespace std;
 
@@ -82,11 +82,19 @@ int main()
 
     POUR AVOIR l'AFFICHAGE DE LA PARTIE
  */
-    Game g;
-    cout << g.toString()<<endl<<endl;
-    int v=g.launchAndPrint();
-    if (v) cout<<"L'IA remporte la partie!"<<endl;
-    else cout <<"defaite..."<<endl;
+
+    double win = 0;
+    for(int i = 1; i<101; i++){
+        Game g;
+        cout << g.toString()<<endl<<endl;
+        int v=g.launch();
+        if (v){
+            cout<<"L'IA remporte la partie!"<<endl;
+            win++;
+        }
+        else cout <<"defaite..."<<endl;
+        cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties." << endl;
+    }
 
     return 0;
 }
