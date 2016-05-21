@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -63,43 +64,51 @@ int main()
     }
     */
 
+    int nbParties=np; //voir Card.h
+    int nbPartiesParCarte=npc; //voir Card.h
+    int ecart=10;
+
     /*
 
     POUR TESTER LE POURCENTAGE DE VICTOIRE
-    int i=0;
-    double tot=0;
-    int res=0;
-    for (i=1;i<101;i++){
-            Game g;
-            res=g.launch();
-            tot+=res;
-            if (res) cout<<"L'IA remporte la partie "<<i<<" !"<<endl;
-            else cout <<"L'IA perd la partie "<<i<<" !"<<endl;
-            cout <<(tot/i)*100<<"%"<<endl;
-    }
-    */
 
-    /*
-
-    POUR AVOIR l'AFFICHAGE DE LA PARTIE
- */
-
+  */
+    for (nbPartiesParCarte;nbPartiesParCarte<5000000;nbPartiesParCarte+=ecart){
     double win = 0;
-    for(int i = 1; i<1001; i++){
-        Game g;
-        //cout << g.toString()<<endl<<endl;
-        int v=g.launch();
+    for(int i = 1; i<nbParties; i++){
+        Game g(nbPartiesParCarte);
+        cout << g.toString()<<endl<<endl;
+        int v=g.launchAndPrint();
         if (v){
             cout<<"L'IA remporte la partie!"<<endl;
             win++;
         }
         else cout <<"defaite..."<<endl;
-        cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties." << endl;
+        cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties pour "<< nbPartiesParCarte<<" partie/carte."<< endl;
     }
+    cout <<"\n\n ECRITURE DANS RESULTS.TXT...\n\n";
     ofstream myfile;
     myfile.open("./results.txt",ios::app);
-    myfile << "1000 parties, Montecarlo 250 : " << win << "% de win.\n";
+    myfile << "Pour "<<nbParties<<" parties, avec "<<nbPartiesParCarte<<" parties/carte dans MonteCarlo : \n" << (win/nbParties)*100 << "% de win.\n";
     myfile.close();
+    }
+
+
+    /*
+
+    POUR AVOIR l'AFFICHAGE DE LA PARTIE
+
+     Game g(nbPartiesParCarte);
+        cout << g.toString()<<endl<<endl;
+        int v=g.launchAndPrint();
+        if (v){
+            cout<<"L'IA remporte la partie!"<<endl;
+        }
+        else cout <<"defaite..."<<endl;
+
+*/
+
+
 
     // 100 parties, Montecarlo 10000 : 70% de win
     // 100 parties, Montecarlo 1000 : 64% de win

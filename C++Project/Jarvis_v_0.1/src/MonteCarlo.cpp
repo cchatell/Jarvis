@@ -7,7 +7,7 @@
 
 
 using namespace std;
-MonteCarlo::MonteCarlo(Game* g):
+MonteCarlo::MonteCarlo(Game* g)
 {
     //ctor
 }

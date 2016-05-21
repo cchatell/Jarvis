@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Game::Game() : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0), player(0)
+Game::Game(int nbpc) : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0), player(0), nbPartiesParCartes(nbpc)
 {
 
     Hand h1(1);
@@ -41,6 +41,7 @@ Game::Game(const Game &g)
     m_contract = g.m_contract;
     m_firstPlayer=g.getFirstPlayer();
     player=g.getPlayer();
+    nbPartiesParCartes=g.getnbPartiesParCartes();
     int i =0;
     while(i<4)
     {
@@ -485,7 +486,7 @@ int Game::GetRandNum(int max)
 }
 
 //scores
-map<const Card*,std::vector<int> > scores;
+map<const Card*,int > scores;
 
 struct thread_arg
 {
@@ -502,7 +503,7 @@ void* do_loop(void* data)
     struct thread_arg *args = (struct thread_arg *)data;
     Game originalGame=*(args->g);
     //const Card *cardToTest = (Card*)data;
-    for (i=0; i<250; i++)
+    for (i=0; i<originalGame.getnbPartiesParCartes(); i++)
     {
         Game testGame=originalGame;
         //int winnerIndex=rand()%(1-0 + 1) + 0;;
@@ -510,7 +511,7 @@ void* do_loop(void* data)
         // A DECOMMENTER QUAND PLAY SERA IMPLEMENTE DANS GAME, on joue une partie
 
         int winnerIndex=testGame.playCard(args->index);
-        scores[args->cardToTest].push_back(winnerIndex);
+        scores[args->cardToTest]+=winnerIndex;
         //cout << pthread_self()<< ": "<< cardToTest->toString()<<" : "<< scores[cardToTest][i]<<"\n";
     }
 
@@ -559,11 +560,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
     for (i=0; i<8-turn; i++)
     {
         Card* c1= game->getHand(game->getCurrentPlayer())->getCard(i);
-
-        for(std::vector<int>::iterator it = scores[c1].begin(); it != scores[c1].end(); ++it)
-        {
-            resultsPerCard[i]+=*it;
-        }
+            resultsPerCard[i]=scores[c1];
         //cout << resultsPerCard[i]<<endl;
     }
     scores.clear();

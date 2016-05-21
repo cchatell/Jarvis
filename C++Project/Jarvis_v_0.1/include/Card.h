@@ -1,6 +1,7 @@
 
 #pragma once
-
+#define np 100
+#define npc 211306
 #include <string>
 
 enum{HEART,DIAMOND,CLUB,SPADE};

@@ -6,7 +6,7 @@
 
 class Game{
     public:
-        Game();
+        Game(int nbpc);
         Game(const Game &g);
         ~Game();
         std::string toString();
@@ -16,6 +16,7 @@ class Game{
         Hand* getHand(int index);
         void setVerbose(int v);
         int getPlayer()const {return player;};
+        int getnbPartiesParCartes()const {return nbPartiesParCartes;};
         int getCurrentPlayer()const {return m_currentPlayer;};
         int getFirstPlayer()const {return m_firstPlayer;};
         // fait tourner tout le jeu
@@ -78,6 +79,8 @@ class Game{
 
         // nb de joueurs qui ont joue ce tour
         int player;
+
+        int nbPartiesParCartes;
 };
 
 Card* MonteCarlo_launch(Game * game, int turn);
