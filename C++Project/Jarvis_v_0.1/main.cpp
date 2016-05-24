@@ -72,14 +72,16 @@ int main()
     POUR TESTER LE POURCENTAGE DE VICTOIRE
 
     */
-    //for (nbPartiesParCarte; nbPartiesParCarte<5000000; nbPartiesParCarte+=ecart)
-    //{
+    for (nbPartiesParCarte; nbPartiesParCarte<5000000; nbPartiesParCarte+=ecart)
+    {
         double win = 0;
         for(int i = 1; i<nbParties; i++)
         {
+
             Game g(nbPartiesParCarte);
-            cout << g.toString()<<endl<<endl;
+            cout << "Contract : " <<COLORS[g.getContract()]<<endl<<endl;
             int v=g.launchAndPrint();
+
             if (v)
             {
                 cout<<"L'IA remporte la partie!"<<endl;
@@ -93,20 +95,23 @@ int main()
         myfile.open("./results.txt",ios::app);
         myfile << "Pour "<<nbParties<<" parties, avec "<<nbPartiesParCarte<<" parties/carte dans MonteCarlo : \n" << (win/nbParties)*100 << "% de win.\n";
         myfile.close();
-    //}
+    }
 
 
     /*
 
     POUR AVOIR l'AFFICHAGE DE LA PARTIE
 
-     Game g(nbPartiesParCarte);
-        cout << g.toString()<<endl<<endl;
-        int v=g.launchAndPrint();
-        if (v){
-            cout<<"L'IA remporte la partie!"<<endl;
-        }
-        else cout <<"defaite..."<<endl;
+  Game g(nbPartiesParCarte);
+           // cout << g.toString()<<endl<<endl;
+            cout << "Contract : " <<COLORS[g.getContract()]<<endl<<endl;
+            int v=g.launchAndPrint();
+            if (v)
+            {
+                cout<<"L'IA remporte la partie!"<<endl;
+                win++;
+            }
+            else cout <<"defaite..."<<endl;
 
     */
 
