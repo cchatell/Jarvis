@@ -18,6 +18,7 @@ class Game{
         int getPlayer()const {return player;};
         int getnbPartiesParCartes()const {return nbPartiesParCartes;};
         int getCurrentPlayer()const {return m_currentPlayer;};
+        int getContract()const {return m_contract;};
         int getFirstPlayer()const {return m_firstPlayer;};
         // fait tourner tout le jeu
         int launch();

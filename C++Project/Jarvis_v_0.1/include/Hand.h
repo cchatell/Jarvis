@@ -50,7 +50,7 @@ class Hand
     protected:
     private:
         std::vector<Card*> m_cards;
-        int m_type; // 0 : random, 1 : will play montecarlo
+        int m_type; // 0 : random, 1 : will play montecarlo 2: choose the card to play
 };
 
 

@@ -15,11 +15,11 @@ using namespace std;
 
 Game::Game(int nbpc) : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(0), player(0), nbPartiesParCartes(nbpc)
 {
-
+// 0 : random, 1 : will play montecarlo 2: choose the card to play
     Hand h1(1);
-    Hand h2(2);
+    Hand h2(0);
     Hand h3(1);
-    Hand h4(2);
+    Hand h4(0);
     m_hands[0]=h1;
     m_hands[1]=h2;
     m_hands[2]=h3;
