@@ -1,12 +1,12 @@
 #include "Ultron.h"
 #include <iostream>
 #include <ctime>
+#include <cstdio>
 
 using namespace std;
 
 Hand::Hand(int n,Card *c1, Card *c2, Card *c3, Card *c4, Card *c5, Card *c6, Card *c7, Card *c8): m_type(n)
 {
-
     this->m_cards.push_back(c1);
     this->m_cards.push_back(c2);
     this->m_cards.push_back(c3);
@@ -44,6 +44,10 @@ Hand::~Hand()
 {
 }
 
+bool Hand::isEmpty(){
+    return m_cards.size() == 0;
+}
+
 void Hand::draw(Card* c){
     m_cards.push_back(c);
 }
@@ -60,10 +64,14 @@ Card* Hand::getCard(int index)const {
 }
 
 string Hand::toString()const{
-    unsigned int i;
+    int i;
     string s1("");
-    for (i=0;i<m_cards.size();i++){
-        s1 += (m_cards[i]->toString()+"; ");
+
+    for (i = 0;i<m_cards.size();i++){
+        char icstr[10];
+        sprintf(icstr, "%d", i);
+        string index(icstr);
+        s1 += ("["+index+"]"+" : "+m_cards[i]->toString()+" ;\n ");
     }
 
     if (s1 == "") s1 = "Rien";

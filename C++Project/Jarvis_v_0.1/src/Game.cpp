@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <vector>
 #include <cstring>
@@ -16,9 +17,9 @@ Game::Game(int nbpc) : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(
 {
 
     Hand h1(1);
-    Hand h2(0);
+    Hand h2(2);
     Hand h3(1);
-    Hand h4(0);
+    Hand h4(2);
     m_hands[0]=h1;
     m_hands[1]=h2;
     m_hands[2]=h3;
@@ -279,15 +280,20 @@ int Game::launchAndPrint()
         if (turn ==7) scorePli+=10;
         m_scores[idWinner] += scorePli;
 
+       /* for(i = 0; i<4; i++)
+        {
+        cout << i << " = " << m_scores[i] << endl;
+        }
+        */
+        int score1=m_scores[0]+m_scores[2];
+        int score2=m_scores[1]+m_scores[3];
+
+        cout << "Equipe 1 (IA) " << " = " << score1 << endl;
+        cout << "Equipe 2" << " = " << score2 << endl;
         m_firstPlayer = idWinner;
         cout<< "le Joueur "<<idWinner<<" remporte le pli contenant "<<scorePli<<" points "<<endl<<endl;
         m_currentPlayer = m_firstPlayer;
         resetBoard();
-    }
-
-    for(i = 0; i<4; i++)
-    {
-        cout << i << " = " << m_scores[i] << endl;
     }
 
     // L'IA est le joueur 0
@@ -303,6 +309,7 @@ Card* Game::play()
 {
     if(m_hands[m_currentPlayer].getType() == 0) return playRandom();
     else if(m_hands[m_currentPlayer].getType() == 1) return playMontecarlo();
+    else if(m_hands[m_currentPlayer].getType() == 2) return playPlayer();
 }
 
 Card* Game::playMontecarlo()
@@ -312,18 +319,36 @@ Card* Game::playMontecarlo()
     return getHand(m_currentPlayer)->discard(index);
 }
 
+Card* Game::playPlayer()
+{
+    cout << endl;
+    cout << m_hands[m_currentPlayer].toString() << endl;
+    cout << "Veuillez entrer le numéro de la carte à jouer parmi les suivantes :" << endl;
+    vector<int> playableIndexes = playableCardsIndex();
+
+    int index = -1;
+    int i=1;
+
+    while(!(find(playableIndexes.begin(), playableIndexes.end(), index) != playableIndexes.end())) {
+        if(i!=1) cout << "NOPE, you can't do that"<<endl;
+        copy(playableIndexes.begin(), playableIndexes.end(),
+            ostream_iterator<int>(std::cout, " "));
+        cout << endl;
+        cin >> index;
+        i++;
+    }
+    return m_hands[m_currentPlayer].discard(index);
+}
+
 int Game::playCard(int index)
 {
-
     Hand* actualHand = &m_hands[m_currentPlayer];
-    //cout << this->toString() << endl;
     board[player] = actualHand->discard(index);
-    //cout << "carte teste"
-    //joueur suivant
     player++;
 
-    actualHand->setType(0);
-    m_hands[(m_currentPlayer+2)%4].setType(0);
+    for(int i = 0; i<4; i++){
+        m_hands[i].setType(0);
+    }
 
     m_currentPlayer = (m_currentPlayer+1)%4;
     return launch();
@@ -480,6 +505,25 @@ int* Game::highestValueBoard()
     return ret;
 }
 
+void Game::shuffleOtherPlayers(){
+    vector<Card*> allCards;
+    int i;
+    for(i = 0; i<4; i++){
+        if(i == m_currentPlayer) i++;
+        while(!m_hands[i].isEmpty()) allCards.push_back(m_hands[i].discard(0));
+    }
+
+    i = m_currentPlayer+1;
+    while(allCards.size() != 0){
+        if(i == m_currentPlayer) i++;
+        int index = GetRandNum(allCards.size());
+        Card* card = allCards[index];
+        allCards.erase(allCards.begin()+index);
+        m_hands[i].draw(card);
+        i = (i+1)%4;
+    }
+}
+
 int Game::GetRandNum(int max)
 {
     return (rand()%max);
@@ -506,6 +550,7 @@ void* do_loop(void* data)
     for (i=0; i<originalGame.getnbPartiesParCartes(); i++)
     {
         Game testGame=originalGame;
+        testGame.shuffleOtherPlayers();
         //int winnerIndex=rand()%(1-0 + 1) + 0;;
 
         // A DECOMMENTER QUAND PLAY SERA IMPLEMENTE DANS GAME, on joue une partie

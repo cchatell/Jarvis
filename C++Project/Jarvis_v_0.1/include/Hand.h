@@ -32,6 +32,8 @@ class Hand
 
         std::string toString() const;
 
+        bool isEmpty();
+
         int getType() const {return m_type;};
 
         void setType(int n){m_type=n;};

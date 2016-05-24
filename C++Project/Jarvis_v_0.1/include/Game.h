@@ -28,6 +28,9 @@ class Game{
         // fait jouer un joueur aleatoirement
         Card* playRandom();
 
+        // fait jouer un joueur aleatoirement
+        Card* playPlayer();
+
         // Joue en utilisant Montecarlo
         Card* playMontecarlo();
 
@@ -37,13 +40,16 @@ class Game{
         // 1 si l'equipe du joueur en cours est maitre
         int master();
 
-        //renvoi un vecteur avex l'index des cartes jouables
+        //renvoie un vecteur avex l'index des cartes jouables
         std::vector<int> playableCardsIndex();
 
         int* highestValueBoard();
 
         //lance une partie et affiche cette partie
         int launchAndPrint();
+
+        void shuffleOtherPlayers();
+
         int GetRandNum(int max);
     private:
     // distribue les cartes

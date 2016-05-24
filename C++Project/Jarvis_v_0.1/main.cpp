@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -72,26 +71,29 @@ int main()
 
     POUR TESTER LE POURCENTAGE DE VICTOIRE
 
-  */
-    for (nbPartiesParCarte;nbPartiesParCarte<5000000;nbPartiesParCarte+=ecart){
-    double win = 0;
-    for(int i = 1; i<nbParties; i++){
-        Game g(nbPartiesParCarte);
-        cout << g.toString()<<endl<<endl;
-        int v=g.launchAndPrint();
-        if (v){
-            cout<<"L'IA remporte la partie!"<<endl;
-            win++;
+    */
+    //for (nbPartiesParCarte; nbPartiesParCarte<5000000; nbPartiesParCarte+=ecart)
+    //{
+        double win = 0;
+        for(int i = 1; i<nbParties; i++)
+        {
+            Game g(nbPartiesParCarte);
+            cout << g.toString()<<endl<<endl;
+            int v=g.launchAndPrint();
+            if (v)
+            {
+                cout<<"L'IA remporte la partie!"<<endl;
+                win++;
+            }
+            else cout <<"defaite..."<<endl;
+            cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties pour "<< nbPartiesParCarte<<" partie/carte."<< endl;
         }
-        else cout <<"defaite..."<<endl;
-        cout << "WINS : " << (win/i)*100 << "%, sur " << i << " parties pour "<< nbPartiesParCarte<<" partie/carte."<< endl;
-    }
-    cout <<"\n\n ECRITURE DANS RESULTS.TXT...\n\n";
-    ofstream myfile;
-    myfile.open("./results.txt",ios::app);
-    myfile << "Pour "<<nbParties<<" parties, avec "<<nbPartiesParCarte<<" parties/carte dans MonteCarlo : \n" << (win/nbParties)*100 << "% de win.\n";
-    myfile.close();
-    }
+        cout <<"\n\n ECRITURE DANS RESULTS.TXT...\n\n";
+        ofstream myfile;
+        myfile.open("./results.txt",ios::app);
+        myfile << "Pour "<<nbParties<<" parties, avec "<<nbPartiesParCarte<<" parties/carte dans MonteCarlo : \n" << (win/nbParties)*100 << "% de win.\n";
+        myfile.close();
+    //}
 
 
     /*
@@ -106,7 +108,7 @@ int main()
         }
         else cout <<"defaite..."<<endl;
 
-*/
+    */
 
 
 

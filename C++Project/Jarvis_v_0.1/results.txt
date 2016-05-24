@@ -1,0 +1,7 @@
+100 parties, Montecarlo 1000 : 69% de win.
+100 parties, Montecarlo 10000 : 71% de win.
+100 parties, Montecarlo 1000 : 69% de win.
+100 parties, Montecarlo 1000 : 64% de win.
+100 parties, Montecarlo 1000 : 63% de win.
+100 parties, Montecarlo 10000 : 70% de win
+100 parties, Montecarlo 250 : 68% de win.

@@ -72,3 +72,58 @@
 	<map>
 	<algorithm>
 
+1464101229 source:/home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	"Game.h"
+
+1462880815 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/MonteCarlo.h
+	"Game.h"
+	<pthread.h>
+
+1464100960 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/Game.h
+	"Hand.h"
+
+1464101399 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/Hand.h
+	<string>
+	<vector>
+	"Card.h"
+
+1464104504 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/Card.h
+	<string>
+
+1463059595 source:/home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/src/Card.cpp
+	"Card.h"
+
+1464104578 source:/home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/src/Game.cpp
+	"Game.h"
+	<cstdlib>
+	<time.h>
+	<iostream>
+	<iterator>
+	<sstream>
+	<vector>
+	<cstring>
+	<algorithm>
+	<pthread.h>
+	<unistd.h>
+	<map>
+
+1463058467 source:/home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/src/MonteCarlo.cpp
+	"MonteCarlo.h"
+	<iostream>
+	<pthread.h>
+	<unistd.h>
+	<map>
+	<algorithm>
+
+1464104461 source:/home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/src/Hand.cpp
+	"Ultron.h"
+	<iostream>
+	<ctime>
+	<cstdio>
+
+1462880815 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/Ultron.h
+	"MonteCarlo.h"
+
