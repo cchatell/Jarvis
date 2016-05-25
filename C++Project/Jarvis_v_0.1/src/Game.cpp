@@ -10,6 +10,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <map>
+#include <math.h>
 
 using namespace std;
 
@@ -17,9 +18,9 @@ Game::Game(int nbpc) : verbose(0), m_turn(0), m_currentPlayer(0), m_firstPlayer(
 {
 // 0 : random, 1 : will play montecarlo 2: choose the card to play
     Hand h1(1);
-    Hand h2(0);
+    Hand h2(2);
     Hand h3(1);
-    Hand h4(0);
+    Hand h4(2);
     m_hands[0]=h1;
     m_hands[1]=h2;
     m_hands[2]=h3;
@@ -138,7 +139,7 @@ void Game::resetBoard()
 int Game::launch()
 {
     int turn = m_turn, i, scorePli;
-    int gagne;
+    double gagne;
 
     for(turn; turn < 8; turn++)
     {
@@ -206,12 +207,13 @@ int Game::launch()
         resetBoard();
     }
 
-    // L'IA est le joueur 0
+    // L'IA est le joueur 0 et 2
     // equipes 0,2 ; 1,3
     if(m_scores[0]+m_scores[2] > m_scores[1]+m_scores[3]) gagne = 1;
-    else gagne = 0;
+    else gagne =0;
 
-    return gagne;
+    //return sqrt(2)*sqrt(m_scores[0]+m_scores[2]);
+    return m_scores[0]+m_scores[2];
 }
 
 int Game::launchAndPrint()
@@ -229,7 +231,8 @@ int Game::launchAndPrint()
         {
             Card* c = play();
             board[player]=c;
-            cout<<"Joueur : " << m_currentPlayer<< " joue la carte "<<c->toString()<<endl;
+            if (m_hands[m_currentPlayer].getType()!=1)cout<<"Player : " << m_currentPlayer<< " plays the card "<<c->toString()<<endl;
+            else cout<<"Player : " << " Jarvis "<< " plays the card "<<c->toString()<<endl;
             m_currentPlayer = (m_currentPlayer+1)%4;
         }
         cout <<endl <<endl <<"Fin "<<turn+1<<" tour"<<endl;
@@ -288,10 +291,10 @@ int Game::launchAndPrint()
         int score1=m_scores[0]+m_scores[2];
         int score2=m_scores[1]+m_scores[3];
 
-        cout << "Equipe 1 (IA) " << " = " << score1 << endl;
-        cout << "Equipe 2" << " = " << score2 << endl;
+        cout << "Team 1 (Jarvis) " << " = " << score1 << endl;
+        cout << "Team 2" << " = " << score2 << endl;
         m_firstPlayer = idWinner;
-        cout<< "le Joueur "<<idWinner<<" remporte le pli contenant "<<scorePli<<" points "<<endl<<endl;
+        cout<< "Player "<<idWinner<<" wins the round with "<<scorePli<<" points "<<endl<<endl;
         m_currentPlayer = m_firstPlayer;
         resetBoard();
     }
@@ -323,7 +326,7 @@ Card* Game::playPlayer()
 {
     cout << endl;
     cout << m_hands[m_currentPlayer].toString() << endl;
-    cout << "Veuillez entrer le numéro de la carte à jouer parmi les suivantes :" << endl;
+    cout << "Enter the number of the card you want to play :" << endl;
     vector<int> playableIndexes = playableCardsIndex();
 
     int index = -1;
@@ -606,7 +609,7 @@ Card* MonteCarlo_launch(Game * game, int turn)
     {
         Card* c1= game->getHand(game->getCurrentPlayer())->getCard(i);
             resultsPerCard[i]=scores[c1];
-        //cout << resultsPerCard[i]<<endl;
+        cout << c1->toString()<<" average score : "<<resultsPerCard[i]/game->getnbPartiesParCartes()<<endl;
     }
     scores.clear();
 

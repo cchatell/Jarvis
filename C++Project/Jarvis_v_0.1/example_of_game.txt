@@ -1,0 +1,246 @@
+Contract : Hearts
+
+Joueur : 0 joue la carte Ace of Clubs
+
+[0] : Queen of Hearts ;
+ [1] : Ace of Hearts ;
+ [2] : 7 of Hearts ;
+ [3] : 8 of Clubs ;
+ [4] : Queen of Diamonds ;
+ [5] : Jack of Hearts ;
+ [6] : Queen of Clubs ;
+ [7] : King of Diamonds ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+3 6 
+3
+Joueur : 1 joue la carte 8 of Clubs
+Joueur : 2 joue la carte Jack of Clubs
+
+[0] : 10 of Hearts ;
+ [1] : 10 of Clubs ;
+ [2] : 10 of Diamonds ;
+ [3] : King of Clubs ;
+ [4] : Jack of Spades ;
+ [5] : King of Spades ;
+ [6] : Jack of Diamonds ;
+ [7] : 8 of Hearts ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+1 3 
+3
+Joueur : 3 joue la carte King of Clubs
+
+
+Fin 1 tour
+Equipe 1 (IA)  = 17
+Equipe 2 = 0
+le Joueur 0 remporte le pli contenant 17 points 
+
+Joueur : 0 joue la carte Ace of Diamonds
+
+[0] : Queen of Hearts ;
+ [1] : Ace of Hearts ;
+ [2] : 7 of Hearts ;
+ [3] : Queen of Diamonds ;
+ [4] : Jack of Hearts ;
+ [5] : Queen of Clubs ;
+ [6] : King of Diamonds ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+3 6 
+3
+Joueur : 1 joue la carte Queen of Diamonds
+Joueur : 2 joue la carte 7 of Diamonds
+
+[0] : 10 of Hearts ;
+ [1] : 10 of Clubs ;
+ [2] : 10 of Diamonds ;
+ [3] : Jack of Spades ;
+ [4] : King of Spades ;
+ [5] : Jack of Diamonds ;
+ [6] : 8 of Hearts ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+2 5 
+5
+Joueur : 3 joue la carte Jack of Diamonds
+
+
+Fin 2 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 0
+le Joueur 0 remporte le pli contenant 16 points 
+
+Joueur : 0 joue la carte 8 of Diamonds
+
+[0] : Queen of Hearts ;
+ [1] : Ace of Hearts ;
+ [2] : 7 of Hearts ;
+ [3] : Jack of Hearts ;
+ [4] : Queen of Clubs ;
+ [5] : King of Diamonds ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+5 
+5
+Joueur : 1 joue la carte King of Diamonds
+Joueur : 2 joue la carte 9 of Diamonds
+
+[0] : 10 of Hearts ;
+ [1] : 10 of Clubs ;
+ [2] : 10 of Diamonds ;
+ [3] : Jack of Spades ;
+ [4] : King of Spades ;
+ [5] : 8 of Hearts ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+2 
+2
+Joueur : 3 joue la carte 10 of Diamonds
+
+
+Fin 3 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 14
+le Joueur 3 remporte le pli contenant 14 points 
+
+
+[0] : 10 of Hearts ;
+ [1] : 10 of Clubs ;
+ [2] : Jack of Spades ;
+ [3] : King of Spades ;
+ [4] : 8 of Hearts ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 2 3 4 
+4
+Joueur : 3 joue la carte 8 of Hearts
+Joueur : 0 joue la carte 9 of Hearts
+
+[0] : Queen of Hearts ;
+ [1] : Ace of Hearts ;
+ [2] : 7 of Hearts ;
+ [3] : Jack of Hearts ;
+ [4] : Queen of Clubs ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 2 3 
+3
+Joueur : 1 joue la carte Jack of Hearts
+Joueur : 2 joue la carte King of Hearts
+
+
+Fin 4 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 52
+le Joueur 1 remporte le pli contenant 38 points 
+
+
+[0] : Queen of Hearts ;
+ [1] : Ace of Hearts ;
+ [2] : 7 of Hearts ;
+ [3] : Queen of Clubs ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 2 3 
+1
+Joueur : 1 joue la carte Ace of Hearts
+Joueur : 2 joue la carte 7 of Spades
+
+[0] : 10 of Hearts ;
+ [1] : 10 of Clubs ;
+ [2] : Jack of Spades ;
+ [3] : King of Spades ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 
+0
+Joueur : 3 joue la carte 10 of Hearts
+Joueur : 0 joue la carte 7 of Clubs
+
+
+Fin 5 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 73
+le Joueur 1 remporte le pli contenant 21 points 
+
+
+[0] : Queen of Hearts ;
+ [1] : 7 of Hearts ;
+ [2] : Queen of Clubs ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 2 
+0
+Joueur : 1 joue la carte Queen of Hearts
+Joueur : 2 joue la carte 8 of Spades
+
+[0] : 10 of Clubs ;
+ [1] : Jack of Spades ;
+ [2] : King of Spades ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 2 
+0
+Joueur : 3 joue la carte 10 of Clubs
+Joueur : 0 joue la carte 9 of Clubs
+
+
+Fin 6 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 86
+le Joueur 1 remporte le pli contenant 13 points 
+
+
+[0] : 7 of Hearts ;
+ [1] : Queen of Clubs ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 
+0
+Joueur : 1 joue la carte 7 of Hearts
+Joueur : 2 joue la carte 10 of Spades
+
+[0] : Jack of Spades ;
+ [1] : King of Spades ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 1 
+1
+Joueur : 3 joue la carte King of Spades
+Joueur : 0 joue la carte 9 of Spades
+
+
+Fin 7 tour
+Equipe 1 (IA)  = 33
+Equipe 2 = 100
+le Joueur 1 remporte le pli contenant 14 points 
+
+
+[0] : Queen of Clubs ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 
+0
+Joueur : 1 joue la carte Queen of Clubs
+Joueur : 2 joue la carte Ace of Spades
+
+[0] : Jack of Spades ;
+ 
+Veuillez entrer le num�ro de la carte � jouer parmi les suivantes :
+0 
+0
+Joueur : 3 joue la carte Jack of Spades
+Joueur : 0 joue la carte Queen of Spades
+
+
+Fin 8 tour
+Equipe 1 (IA)  = 62
+Equipe 2 = 100
+le Joueur 2 remporte le pli contenant 29 points 
+
+defaite...
+
+Process returned 0 (0x0)   execution time : 571.531 s
+Press ENTER to continue.

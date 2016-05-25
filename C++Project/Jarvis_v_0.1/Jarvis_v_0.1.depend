@@ -127,3 +127,51 @@
 1462880815 /home-reseau/mmoser/WorkspaceC/Jarvis/C++Project/Jarvis_v_0.1/include/Ultron.h
 	"MonteCarlo.h"
 
+1464172399 source:/mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	"Game.h"
+
+1464107492 /mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/include/Game.h
+	"Hand.h"
+
+1464107872 /mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/include/Hand.h
+	<string>
+	<vector>
+	"Card.h"
+
+1464170274 /mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/include/Card.h
+	<string>
+
+1463586628 source:/mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/src/Card.cpp
+	"Card.h"
+
+1464172101 source:/mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/src/Game.cpp
+	"Game.h"
+	<cstdlib>
+	<time.h>
+	<iostream>
+	<iterator>
+	<sstream>
+	<vector>
+	<cstring>
+	<algorithm>
+	<pthread.h>
+	<unistd.h>
+	<map>
+	<math.h>
+
+1464170289 source:/mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/src/Hand.cpp
+	"Ultron.h"
+	<iostream>
+	<ctime>
+	<cstdio>
+
+1463584908 /mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/include/Ultron.h
+	"MonteCarlo.h"
+
+1463584908 /mnt/hgfs/Dropbox/3e_annee/IA/Jarvis/Jarvis/C++Project/Jarvis_v_0.1/include/MonteCarlo.h
+	"Game.h"
+	<pthread.h>
+

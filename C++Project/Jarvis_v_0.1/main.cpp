@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    cout << "Bonjour M. Stark, en quoi puis-je vous aider ?" << endl<<endl;
+    cout << "Welcome home, sir..." << endl<<endl;
 
     //exemples de cartes
     /*Card as_trefle(CLUB,ACE);
@@ -66,18 +66,18 @@ int main()
     int nbParties=np; //voir Card.h
     int nbPartiesParCarte=npc; //voir Card.h
     int ecart=10;
-
+    double win = 0;
     /*
 
     POUR TESTER LE POURCENTAGE DE VICTOIRE
 
-    */
+
     for (nbPartiesParCarte; nbPartiesParCarte<5000000; nbPartiesParCarte+=ecart)
     {
-        double win = 0;
-        for(int i = 1; i<nbParties; i++)
-        {
+        win=0;
 
+       for(int i = 1; i<nbParties; i++)
+        {
             Game g(nbPartiesParCarte);
             cout << "Contract : " <<COLORS[g.getContract()]<<endl<<endl;
             int v=g.launchAndPrint();
@@ -97,23 +97,23 @@ int main()
         myfile.close();
     }
 
-
+*/
     /*
 
     POUR AVOIR l'AFFICHAGE DE LA PARTIE
-
-  Game g(nbPartiesParCarte);
+*/
+            Game g(nbPartiesParCarte);
            // cout << g.toString()<<endl<<endl;
             cout << "Contract : " <<COLORS[g.getContract()]<<endl<<endl;
             int v=g.launchAndPrint();
             if (v)
             {
-                cout<<"L'IA remporte la partie!"<<endl;
+                cout<<"Jarvis WINS ! \n Sir the more you struggle the more this is going to hurt "<<endl;
                 win++;
             }
-            else cout <<"defaite..."<<endl;
+            else cout <<"DEFEAT..."<<endl;
 
-    */
+
 
 
 
